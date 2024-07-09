@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,62 +27,63 @@ class StoreRepositoryTest {
     @Autowired
     ProductRepository productRepository;
 
+    private Store store;
+
     @BeforeEach
     void setUp() {
-        Employee e1 = new Employee("Juan");
-//        Employee e2 = new Seller("Pedro","pedro@gmail.com",53);
-        employeeRepository.save(e1);
-//        employeeRepository.save(e2);
+        employeeRepository.save(new Employee("Juan"));
+        employeeRepository.save(new Seller("Pedro","pedro@gmail.com",53));
 
-        List<Employee> employees = new ArrayList<>();
-        employees.add(e1);
-//        employees.add(e2);
+        productRepository.save(new Product("Coca-Cola", 2.5,10));
+        productRepository.save(new Product("Bread", 1.0,100));
 
-        Product p1 = new Product("Coca-Cola", 2.5,10);
-        Product p2 = new Product("Bread", 1.0,100);
-        productRepository.save(p1);
-        productRepository.save(p2);
+        departmentRepository.save(new Department("Food",
+                employeeRepository.findAll(),
+                productRepository.findAll()));
 
-        List<Product> products = new ArrayList<>();
-        products.add(p1);
-        products.add(p2);
-
-        Department d1 = new Department("Food",employees,products);
-        departmentRepository.save(d1);
-
-        List<Department> departments = new ArrayList<>();
-        departments.add(d1);
-
-        Store store = new Store("Hugo-Market","San Juan",departments);
+        store = new Store("Hugo-Market",
+                "San Juan",
+                departmentRepository.findAll());
         storeRepository.save(store);
     }
 
-//    @Test
-//    void storeIsSavedCorrectly() {
-//        List<Store> stores = storeRepository.findAll();
-//        assertEquals(1, stores.size(), "Expected one store to be saved");
-//
-//        Store retrievedStore = stores.get(0);
-//        assertEquals("Hugo-Market", retrievedStore.getName(), "Store name does not match");
-//        assertEquals("San Juan", retrievedStore.getLocation(), "Store location does not match");
-//        assertNotNull(retrievedStore.getDepartments(), "Departments should not be null");
-//        assertEquals(1, retrievedStore.getDepartments().size(), "Expected one department in the store");
-//    }
+    @Test
+    void testSaveStore() {
+        storeRepository.deleteAll();
+        departmentRepository.deleteAll();
+        employeeRepository.deleteAll();
+        productRepository.deleteAll();
+
+        employeeRepository.save(new Seller("Willy","wonka@yahoo.com",72));
+
+        productRepository.save(new Product("Chocolate", 0.99,253));
+
+        departmentRepository.save(new Department("Sweets",
+                employeeRepository.findAll(),
+                productRepository.findAll()));
+
+        Store newStore = new Store("Mini-Market", "Cuba", departmentRepository.findAll());
+        Store savedStore = storeRepository.save(newStore);
+        assertNotNull(savedStore.getId());
+        assertEquals("Mini-Market", savedStore.getName(), "The store is not saved correctly");
+    }
 
     @Test
-    void test(){
-        storeRepository.findAll().forEach(System.out::println);
-        productRepository.findAll().forEach(System.out::println);
-        employeeRepository.findAll().forEach(System.out::println);
-        departmentRepository.findAll().forEach(System.out::println);
+    void testFindById() {
+        assertTrue(storeRepository.findById(store.getId()).isPresent(), "The store is not found");
+    }
 
+    @Test
+    void testDeleteStore() {
+        storeRepository.delete(store);
+        assertFalse(storeRepository.findById(store.getId()).isPresent(), "The store is not deleted");
     }
 
     @AfterEach
     void tearDown() {
-//        storeRepository.deleteAll();
-//        departmentRepository.deleteAll();
-//        employeeRepository.deleteAll();
-//        productRepository.deleteAll();
+        storeRepository.deleteAll();
+        departmentRepository.deleteAll();
+        employeeRepository.deleteAll();
+        productRepository.deleteAll();
     }
 }

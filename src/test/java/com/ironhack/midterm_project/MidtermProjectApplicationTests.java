@@ -9,5 +9,4 @@ class MidtermProjectApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

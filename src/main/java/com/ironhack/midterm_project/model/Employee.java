@@ -1,6 +1,7 @@
 package com.ironhack.midterm_project.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,14 +13,15 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "The employee must have a name")
     private String name;
 
     public Employee(String name) {
         this.name = name;
     }
 
-    @ManyToOne
-    private Department department;
+//    @ManyToOne
+//    private Department department;
 
 //    public Employee(String name, Department department) {
 //        this.name = name;
