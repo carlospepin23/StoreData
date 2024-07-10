@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
