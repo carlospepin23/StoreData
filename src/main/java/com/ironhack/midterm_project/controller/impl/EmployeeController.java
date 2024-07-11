@@ -1,8 +1,9 @@
 package com.ironhack.midterm_project.controller.impl;
 
+import com.ironhack.midterm_project.controller.dto.EmployeeNameDTO;
 import com.ironhack.midterm_project.controller.interfaces.IEmployeeController;
 import com.ironhack.midterm_project.model.Employee;
-import com.ironhack.midterm_project.service.interfaces.IEmployeeService;
+import com.ironhack.midterm_project.service.impl.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import java.util.List;
 public class EmployeeController implements IEmployeeController {
 
     @Autowired
-    IEmployeeService employeeService;
+    EmployeeService employeeService;
 
     //  ****************************************************  GET  ****************************************************
     @GetMapping("/employees")
@@ -38,16 +39,12 @@ public class EmployeeController implements IEmployeeController {
     //  ***************************************************  PATCH  ****************************************************
     @PatchMapping("/employees/{id}/name")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateEmployeeName(@RequestBody @Valid String name, @PathVariable Integer id) {
-        employeeService.updateEmployeeName(name, id);
+    public void updateEmployeeName(@RequestBody @Valid EmployeeNameDTO employeeNameDTO, @PathVariable Integer id) {
+        employeeService.updateEmployeeName(employeeNameDTO, id);
     }
 
     //  ***************************************************  PUT  ****************************************************
-    @PutMapping("/employees/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void updateEmployeeInformation(@RequestBody @Valid Employee employee, @PathVariable Integer id) {
-        employeeService.updateEmployeeInformation(employee, id);
-    }
+
 
     //  ***************************************************  DELETE  ****************************************************
     @DeleteMapping("/employees/{id}")
