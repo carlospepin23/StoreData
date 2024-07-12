@@ -1,6 +1,6 @@
-package com.ironhack.midterm_project.service.interfaces;
+package com.ironhack.midterm_project.controller.interfaces;
 
-//import com.ironhack.midterm_project.model.Employee;
+//import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeDTO;
 import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeNameDTO;
 import com.ironhack.midterm_project.controller.dto.seller_dto.SellerDTO;
 import com.ironhack.midterm_project.controller.dto.seller_dto.SellerEmailDTO;
@@ -10,7 +10,7 @@ import com.ironhack.midterm_project.model.Seller;
 
 import java.util.List;
 
-public interface ISellerService {
+public interface ISellerController {
     List<Seller> getAllSellers();
     Seller getSellerById(Integer id);
 //    void addNewSeller(Seller seller);

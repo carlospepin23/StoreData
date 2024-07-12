@@ -1,4 +1,4 @@
-package com.ironhack.midterm_project.service.interfaces;
+package com.ironhack.midterm_project.controller.interfaces;
 
 import com.ironhack.midterm_project.controller.dto.product_dto.ProductDTO;
 import com.ironhack.midterm_project.controller.dto.product_dto.ProductNameDTO;
@@ -8,7 +8,7 @@ import com.ironhack.midterm_project.model.Product;
 
 import java.util.List;
 
-public interface IProductsService {
+public interface IProductController {
     List<Product> getAllProducts();
     Product getProductById(Integer id);
     void addNewProduct(Product product);
@@ -17,6 +17,5 @@ public interface IProductsService {
     void updateProductStock(ProductStockDTO productStockDTO, Integer id);
     void updateProductInformation(ProductDTO productDTO, Integer id);
     void deleteProduct(Integer id);
-    void deleteAllProduct();
-
+    void deleteAllProducts();
 }

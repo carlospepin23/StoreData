@@ -28,6 +28,11 @@ class EmployeeRepositoryTest {
     }
 
     @Test
+    void test(){
+
+    }
+
+    @Test
     void testSaveEmployee() {
         Employee newEmployee = new Employee("New Employee");
         Employee savedEmployee = employeeRepository.save(newEmployee);
