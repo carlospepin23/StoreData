@@ -22,7 +22,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,7 +66,7 @@ public class DepartmentService implements IDepartmentService {
                 if (employeeOptional.isPresent()) {
                     throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "An employee with the name " + employee.getName() + " already exists.");
                 } else {
-                    // Check if the employee is a Seller and if an email already exists
+
                     if (employee instanceof Seller seller) {
 
                         if (sellerRepository.findByEmail(seller.getEmail()).isPresent()) {

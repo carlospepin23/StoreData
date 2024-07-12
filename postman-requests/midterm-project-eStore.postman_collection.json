@@ -1,0 +1,1133 @@
+{
+	"info": {
+		"_postman_id": "04e386ef-9c26-45a4-bc52-6dbedff942ae",
+		"name": "midterm-project-eStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36730208"
+	},
+	"item": [
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/employees/34",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees",
+								"34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"name\": \"Big Fudge\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH NAME",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Eriksen Marshall\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/employees/38/name",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees",
+								"38",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT INFO",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Tank Thomas\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/employees/38",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees",
+								"38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/employees/37",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees",
+								"37"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ALL *",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/employees/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seller",
+			"item": [
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/sellers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/sellers/32",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sellers",
+								"32"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Ted Mosby\",\r\n        \"email\": \"tmosby@yahoo.com\",\r\n        \"sales\": 2\r\n\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/sellers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH NAME",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Big T\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/sellers/37/name",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sellers",
+								"37",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH SALES",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"sales\": 4\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/sellers/38/sales",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sellers",
+								"38",
+								"sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH EMAIL",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"email\": \"goga@gmail.com\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/sellers/32/email",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sellers",
+								"32",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT INFO",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Barney Stinson\",\r\n        \"email\": \"bstinson@yahoo.com\",\r\n        \"sales\": 400\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/sellers/38",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sellers",
+								"38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/sellers/36",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sellers",
+								"36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ALL *",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/sellers/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sellers",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/products",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/products/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Bread\",\r\n        \"price\": 1.00,\r\n        \"stock\":15\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH NAME",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Coca-Cola\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products/1/name",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"1",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH PRICE",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"price\": 2.5\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products/1/price",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"1",
+								"price"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH STOCK",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"stock\": 6\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products/1/stock",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"1",
+								"stock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT INFO",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Fanta\",\r\n        \"price\": 1.85,\r\n        \"stock\": 16\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/products/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ALL *",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/products/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Department",
+			"item": [
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/departments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/departments/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Educational\",\r\n    \"employees\": [\r\n        {\r\n            \"type\": \"Employee\",\r\n            \"name\": \"Robert Rodriguez\"\r\n        },\r\n        {\r\n            \"type\": \"Seller\",\r\n            \"name\": \"Min Lisa\",\r\n            \"email\": \"ml@gmail.com\",\r\n            \"sales\": 17\r\n        }\r\n    ],\r\n    \"inventory\": [\r\n        {\r\n            \"name\": \"Pen\",\r\n            \"price\": 1.00,\r\n            \"stock\": 1005\r\n        },\r\n        {\r\n            \"name\": \"Pencil\",\r\n            \"price\": 0.99,\r\n            \"stock\": 765\r\n        }\r\n\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/departments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH NAME",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"University\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/departments/11/name",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"11",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH EMPLOYEES",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"employees\": [\r\n            {\r\n                \"type\": \"EmployeeDTO\",\r\n                \"name\": \"Robert Rodriguez\"\r\n            },\r\n            {\r\n                \"type\": \"SellerDTO\",\r\n                \"name\": \"Min Lisa\",\r\n                \"email\": \"lm@gmail.com\",\r\n                \"sales\": 71\r\n            }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/departments/1/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"1",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH INVENTORY",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inventory\": [\r\n            {\r\n                \"name\": \"Pen\",\r\n                \"price\": 2.0,\r\n                \"stock\": 2005\r\n            },\r\n            {\r\n                \"name\": \"Pencil\",\r\n                \"price\": 0.11,\r\n                \"stock\": 165\r\n            }\r\n        ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/departments/1/inventory",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"1",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT INFO",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Educational\",\r\n    \"employees\": [\r\n        {\r\n            \"type\": \"EmployeeDTO\",\r\n            \"name\": \"Robert Rodriguez\"\r\n        },\r\n        {\r\n            \"type\": \"SellerDTO\",\r\n            \"name\": \"Min Lisa\",\r\n            \"email\": \"ml@yahoo.com\",\r\n            \"sales\": 177\r\n        }\r\n    ],\r\n    \"inventory\": [\r\n        {\r\n            \"name\": \"Pen\",\r\n            \"price\": 3.00,\r\n            \"stock\": 345\r\n        },\r\n        {\r\n            \"name\": \"Pencil\",\r\n            \"price\": 0.50,\r\n            \"stock\": 345\r\n        }\r\n\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/departments/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/departments/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ALL *",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/departments/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"departments",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "GET ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/stores",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/stores/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Colmado A-Peso\",\r\n    \"location\": \"San Juan\",\r\n    \"departments\": [\r\n        {\r\n            \"name\": \"Cleaning\",\r\n            \"employees\": [\r\n                {\r\n                    \"type\": \"Employee\",\r\n                    \"name\": \"Maria\"\r\n                },\r\n                {\r\n                    \"type\": \"Seller\",\r\n                    \"name\": \"Kiara\",\r\n                    \"email\": \"kiara@gmail.com\",\r\n                    \"sales\": 5\r\n                }\r\n            ],\r\n            \"inventory\": [\r\n                {\r\n                    \"name\": \"Fabuloso\",\r\n                    \"price\": 3.0,\r\n                    \"stock\": 50\r\n                },\r\n                {\r\n                    \"name\": \"Clorox\",\r\n                    \"price\": 6.0,\r\n                    \"stock\": 50\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/stores",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Hugo-Market\",\r\n    \"location\": \"Carolina\",\r\n    \"departments\": [\r\n        {\r\n            \"name\": \"Educational\",\r\n            \"employees\": [\r\n                {\r\n                    \"type\": \"Employee\",\r\n                    \"name\": \"Roberto Olmeda\"\r\n                },\r\n                {\r\n                    \"type\": \"Seller\",\r\n                    \"name\": \"Wilfredo Quinonez\",\r\n                    \"email\": \"wquinonez@gmail.com\",\r\n                    \"sales\": 15\r\n                }\r\n            ],\r\n            \"inventory\": [\r\n                {\r\n                    \"name\": \"Pencil\",\r\n                    \"price\": 1.0,\r\n                    \"stock\": 50\r\n                },\r\n                {\r\n                    \"name\": \"Pen\",\r\n                    \"price\": 1.5,\r\n                    \"stock\": 50\r\n                },\r\n                {\r\n                    \"name\": \"Book\",\r\n                    \"price\": 2.0,\r\n                    \"stock\": 50\r\n                },\r\n                {\r\n                    \"name\": \"Notebook\",\r\n                    \"price\": 2.5,\r\n                    \"stock\": 50\r\n                }\r\n            ]\r\n        },{\r\n            \"name\": \"Pharmacy\",\r\n            \"employees\": [\r\n                {\r\n                    \"type\": \"Employee\",\r\n                    \"name\": \"Jimmy Seale\"\r\n                },\r\n                {\r\n                    \"type\": \"Seller\",\r\n                    \"name\": \"Cynthia Rivera\",\r\n                    \"email\": \"crivera@gmail.com\",\r\n                    \"sales\": 25\r\n                }\r\n            ],\r\n            \"inventory\": [\r\n                {\r\n                    \"name\": \"Aspirin\",\r\n                    \"price\": 0.5,\r\n                    \"stock\": 50\r\n                },\r\n                {\r\n                    \"name\": \"Ibuprofen\",\r\n                    \"price\": 0.75,\r\n                    \"stock\": 50\r\n                },\r\n                {\r\n                    \"name\": \"Vics\",\r\n                    \"price\": 1.0,\r\n                    \"stock\": 50\r\n                },\r\n                {\r\n                    \"name\": \"Alcohol\",\r\n                    \"price\": 2.0,\r\n                    \"stock\": 50\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/stores",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH NAME",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"name\": \"Ivan-Market\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/stores/1/name",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores",
+								"1",
+								"name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH LOCATION",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"location\":\"Carolina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/stores/1/location",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores",
+								"1",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH DEPARTMENTS",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"departments\": [\r\n            {\r\n                \"name\": \"Food\",\r\n                \"employees\": [\r\n                    {\r\n                        \"type\": \"EmployeeDTO\",\r\n                        \"name\": \"Juan\"\r\n                    },\r\n                    {\r\n                        \"type\": \"SellerDTO\",\r\n                        \"name\": \"Pedro\",\r\n                        \"email\": \"peter@gmail.com\",\r\n                        \"sales\": 35\r\n                    }\r\n                ],\r\n                \"inventory\": [\r\n                    {\r\n                        \"name\": \"Milk\",\r\n                        \"price\": 1.0,\r\n                        \"stock\": 35\r\n                    },\r\n                    {\r\n                        \"name\": \"Coca-Cola\",\r\n                        \"price\": 1.5,\r\n                        \"stock\": 35\r\n                    },\r\n                    {\r\n                        \"name\": \"Ice\",\r\n                        \"price\": 0.50,\r\n                        \"stock\": 35\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/stores/1/departments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores",
+								"1",
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT INFO",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"name\": \"A-Peso Colmado\",\r\n        \"location\": \"Toa Alta\",\r\n        \"departments\": [\r\n            {\r\n                \"name\": \"Cleaning\",\r\n                \"employees\": [\r\n                    {\r\n                        \"type\": \"EmployeeDTO\",\r\n                        \"name\": \"Maria\"\r\n                    },\r\n                    {\r\n                        \"type\": \"SellerDTO\",\r\n                        \"name\": \"Kiara\",\r\n                        \"email\": \"k@gmail.com\",\r\n                        \"sales\": 55\r\n                    }\r\n                ],\r\n                \"inventory\": [\r\n                    {\r\n                        \"name\": \"Fabuloso\",\r\n                        \"price\": 3.0,\r\n                        \"stock\": 55\r\n                    },\r\n                    {\r\n                        \"name\": \"Clorox\",\r\n                        \"price\": 6.0,\r\n                        \"stock\": 55\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/stores/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/stores/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ALL *",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/stores/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
