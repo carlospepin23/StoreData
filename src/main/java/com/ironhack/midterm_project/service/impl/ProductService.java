@@ -4,7 +4,7 @@ import com.ironhack.midterm_project.controller.dto.product_dto.ProductDTO;
 import com.ironhack.midterm_project.controller.dto.product_dto.ProductNameDTO;
 import com.ironhack.midterm_project.controller.dto.product_dto.ProductPriceDTO;
 import com.ironhack.midterm_project.controller.dto.product_dto.ProductStockDTO;
-import com.ironhack.midterm_project.model.Employee;
+
 import com.ironhack.midterm_project.model.Product;
 import com.ironhack.midterm_project.repository.ProductRepository;
 import com.ironhack.midterm_project.service.interfaces.IProductsService;
