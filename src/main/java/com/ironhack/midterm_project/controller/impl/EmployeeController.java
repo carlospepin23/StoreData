@@ -1,6 +1,8 @@
 package com.ironhack.midterm_project.controller.impl;
 
-import com.ironhack.midterm_project.controller.dto.EmployeeNameDTO;
+import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeDTO;
+import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeNameDTO;
+import com.ironhack.midterm_project.controller.dto.product_dto.ProductDTO;
 import com.ironhack.midterm_project.controller.interfaces.IEmployeeController;
 import com.ironhack.midterm_project.model.Employee;
 import com.ironhack.midterm_project.service.impl.EmployeeService;
@@ -44,7 +46,11 @@ public class EmployeeController implements IEmployeeController {
     }
 
     //  ***************************************************  PUT  ****************************************************
-
+    @PutMapping("/employees/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateEmployeeInformation(@RequestBody @Valid EmployeeDTO employeeDTO, @PathVariable Integer id) {
+        employeeService.updateEmployeeInformation(employeeDTO, id);
+    }
 
     //  ***************************************************  DELETE  ****************************************************
     @DeleteMapping("/employees/{id}")
@@ -52,4 +58,12 @@ public class EmployeeController implements IEmployeeController {
     public void deleteEmployee(@PathVariable Integer id) {
         employeeService.deleteEmployee(id);
     }
+
+    @DeleteMapping("/employees/all")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAllEmployees() {
+        employeeService.deleteAllEmployees();
+    }
 }
+
+

@@ -25,12 +25,6 @@ public class Store {
     @OneToMany
     private List<Department> departments;
 
-
-//    public Store(String name, String location) {
-//        this.name = name;
-//        this.location = location;
-//    }
-
     public Store(String name, String location, List<Department> departments) {
         this.name = name;
         this.location = location;

@@ -12,5 +12,6 @@ public interface IStoreService {
     void updateStoreDepartments(List<Department> departments, Integer id);
     void updateStoreInformation(Store store, Integer id);
     void deleteStore(Integer id);
+    void deleteAllStores();
 
 }

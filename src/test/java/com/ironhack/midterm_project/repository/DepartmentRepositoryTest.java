@@ -3,6 +3,7 @@ package com.ironhack.midterm_project.repository;
 import com.ironhack.midterm_project.model.Department;
 import com.ironhack.midterm_project.model.Employee;
 import com.ironhack.midterm_project.model.Product;
+import com.ironhack.midterm_project.model.Seller;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,7 @@ class DepartmentRepositoryTest {
     @BeforeEach
     void setUp() {
         employeeRepository.save(new Employee("Thomas Tank"));
+        employeeRepository.save(new Seller("Titan Ortiz","tortiz@hotmail.com",12));
         productRepository.save(new Product("Aspirin", 5.0, 10));
 
         department = new Department("Pharmacy",
@@ -38,6 +40,10 @@ class DepartmentRepositoryTest {
         departmentRepository.save(department);
     }
 
+    @Test
+    void test(){
+
+    }
 
     @Test
     void testSaveDepartment() {

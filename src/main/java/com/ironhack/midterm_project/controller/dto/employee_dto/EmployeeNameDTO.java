@@ -1,4 +1,4 @@
-package com.ironhack.midterm_project.controller.dto;
+package com.ironhack.midterm_project.controller.dto.employee_dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

@@ -68,4 +68,9 @@ public class StoreService implements IStoreService {
     public void deleteStore(Integer id) {
         storeRepository.deleteById(id);
     }
+
+    @Override
+    public void deleteAllStores() {
+        storeRepository.deleteAll();
+    }
 }

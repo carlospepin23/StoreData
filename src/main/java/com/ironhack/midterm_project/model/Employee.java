@@ -1,5 +1,7 @@
 package com.ironhack.midterm_project.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -9,6 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Seller.class, name = "Seller")
+})
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +27,4 @@ public class Employee {
         this.name = name;
     }
 
-//    @ManyToOne
-//    private Department department;
-
-//    public Employee(String name, Department department) {
-//        this.name = name;
-//        this.department = department;
-//    }
 }

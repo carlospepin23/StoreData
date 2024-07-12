@@ -1,18 +1,16 @@
 package com.ironhack.midterm_project.service.impl;
 
-import com.ironhack.midterm_project.controller.dto.SellerDTO;
-import com.ironhack.midterm_project.controller.dto.SellerEmailDTO;
-import com.ironhack.midterm_project.controller.dto.SellerNameDTO;
-import com.ironhack.midterm_project.controller.dto.SellerSalesDTO;
-import com.ironhack.midterm_project.model.Employee;
+import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeNameDTO;
+import com.ironhack.midterm_project.controller.dto.seller_dto.SellerDTO;
+import com.ironhack.midterm_project.controller.dto.seller_dto.SellerEmailDTO;
+//import com.ironhack.midterm_project.controller.dto.seller_dto.SellerNameDTO;
+import com.ironhack.midterm_project.controller.dto.seller_dto.SellerSalesDTO;
 import com.ironhack.midterm_project.model.Seller;
 import com.ironhack.midterm_project.repository.SellerRepository;
 import com.ironhack.midterm_project.service.interfaces.ISellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -37,13 +35,13 @@ public class SellerService implements ISellerService {
         return sellerOptional.get();
     }
 
-    @Override
-    public void addNewSeller(Seller seller) {
-        sellerRepository.save(seller);
-    }
+//    @Override
+//    public void addNewSeller(Seller seller) {
+//        sellerRepository.save(seller);
+//    }
 
     @Override
-    public void updateSellerName(SellerNameDTO sellerNameDTO, Integer id) {
+    public void updateSellerName(EmployeeNameDTO sellerNameDTO, Integer id) {
         Optional<Seller> sellerOptional = sellerRepository.findById(id);
         if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Seller with id " + id + " not found.");
@@ -78,7 +76,7 @@ public class SellerService implements ISellerService {
         if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Seller with id " + id + " not found.");
         Seller seller = sellerOptional.get();
-//        seller.setName(sellerDTO.getName());
+        seller.setName(sellerDTO.getName());
         seller.setEmail(sellerDTO.getEmail());
         seller.setSales(sellerDTO.getSales());
         sellerRepository.save(seller);
@@ -90,5 +88,10 @@ public class SellerService implements ISellerService {
         if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Seller with id " + id + " not found.");
         sellerRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteAllSellers() {
+        sellerRepository.deleteAll();
     }
 }

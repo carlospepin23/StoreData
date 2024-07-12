@@ -1,15 +1,10 @@
 package com.ironhack.midterm_project.controller.impl;
 
-//import com.ironhack.midterm_project.controller.dto.EmployeeNameDTO;
-import com.ironhack.midterm_project.controller.dto.SellerDTO;
-import com.ironhack.midterm_project.controller.dto.SellerEmailDTO;
-import com.ironhack.midterm_project.controller.dto.SellerNameDTO;
-import com.ironhack.midterm_project.controller.dto.SellerSalesDTO;
+import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeNameDTO;
+import com.ironhack.midterm_project.controller.dto.seller_dto.*;
 import com.ironhack.midterm_project.controller.interfaces.ISellerController;
-//import com.ironhack.midterm_project.model.Employee;
 import com.ironhack.midterm_project.model.Seller;
 import com.ironhack.midterm_project.service.impl.SellerService;
-//import com.ironhack.midterm_project.service.interfaces.ISellerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,16 +31,16 @@ public class SellerController implements ISellerController {
     }
 
     //  ***************************************************  POST  ****************************************************
-    @PostMapping("/sellers")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void addNewSeller(@RequestBody @Valid Seller seller) {
-        sellerService.addNewSeller(seller);
-    }
+//    @PostMapping("/sellers")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void addNewSeller(@RequestBody @Valid Seller seller) {
+//        sellerService.addNewSeller(seller);
+//    }
 
     //  ***************************************************  PATCH  ****************************************************
     @PatchMapping("/sellers/{id}/name")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateSellerName(@RequestBody @Valid SellerNameDTO sellerNameDTO, @PathVariable Integer id) {
+    public void updateSellerName(@RequestBody @Valid EmployeeNameDTO sellerNameDTO, @PathVariable Integer id) {
         sellerService.updateSellerName(sellerNameDTO, id);
     }
 
@@ -73,5 +68,11 @@ public class SellerController implements ISellerController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteSeller(@PathVariable Integer id) {
         sellerService.deleteSeller(id);
+    }
+
+    @DeleteMapping("/sellers/all")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAllSellers() {
+        sellerService.deleteAllSellers();
     }
 }
