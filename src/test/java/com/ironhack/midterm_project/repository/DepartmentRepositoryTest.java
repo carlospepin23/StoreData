@@ -29,13 +29,19 @@ class DepartmentRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        employeeRepository.save(new Employee("Thomas Tank"));
-        employeeRepository.save(new Seller("Titan Ortiz","tortiz@hotmail.com",12));
-        productRepository.save(new Product("Aspirin", 5.0, 10));
+
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("Thomas Tank"));
+        employees.add(new Seller("Titan Ortiz","tortiz@hotmail.com",12));
+        employeeRepository.saveAll(employees);
+
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("Aspirin", 5.0, 10));
+        productRepository.saveAll(products);
 
         department = new Department("Pharmacy",
-                employeeRepository.findAll(),
-                productRepository.findAll());
+                employees,
+                products);
 
         departmentRepository.save(department);
     }
@@ -47,15 +53,21 @@ class DepartmentRepositoryTest {
 
     @Test
     void testSaveDepartment() {
-        departmentRepository.deleteAll();
-        employeeRepository.deleteAll();
-        productRepository.deleteAll();
+       departmentRepository.deleteAll();
+       employeeRepository.deleteAll();
+       productRepository.deleteAll();
 
-       employeeRepository.save(new Employee("Juan James"));
-       productRepository.save(new Product("Tire", 200.0, 17));
+       List<Employee> employees = new ArrayList<>();
+       employees.add(new Employee("Juan James"));
+       employeeRepository.saveAll(employees);
+
+       List<Product> products = new ArrayList<>();
+         products.add(new Product("Tire", 200.0, 17));
+       productRepository.saveAll(products);
+
        Department newDepartment = new Department("Automotive",
-               employeeRepository.findAll(),
-               productRepository.findAll());
+               employees,
+               products);
 
         Department savedDepartment = departmentRepository.save(newDepartment);
         assertNotNull(savedDepartment.getId());

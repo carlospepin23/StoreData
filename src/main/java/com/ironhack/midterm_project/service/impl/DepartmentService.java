@@ -31,6 +31,7 @@ public class DepartmentService implements IDepartmentService {
 
     @Autowired
     DepartmentRepository departmentRepository;
+
     @Autowired
     EmployeeRepository employeeRepository;
 
@@ -56,8 +57,8 @@ public class DepartmentService implements IDepartmentService {
     @Override
     @Transactional //makes sure method is completed or rolled back if there is an error
     public void addNewDepartment(Department department) {
-        Optional<Department> existingDepartment = departmentRepository.findByName(department.getName());
-        if (existingDepartment.isPresent()) {
+        Optional<Department> departmentOptional = departmentRepository.findByName(department.getName());
+        if (departmentOptional.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A department with the name " + department.getName() + " already exists.");
         } else {
             for (Employee employee : department.getEmployees()) {
@@ -91,17 +92,18 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public void updateDepartmentName(DepartmentNameDTO departmentNameDTO, Integer id) {
-        Department department = departmentRepository.findById(id).orElse(null);
-        if (department == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+        Optional<Department> departmentOptional = departmentRepository.findById(id);
+        if (departmentOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Department with id " + id + " not found.");
+        Department department = departmentOptional.get();
         department.setName(departmentNameDTO.getName());
         departmentRepository.save(department);
     }
 
     @Override
     public void updateDepartmentEmployees(DepartmentEmployeesDTO departmentEmployeesDTO, Integer id) {
-        Department department = departmentRepository.findById(id).orElse(null);
-        if(department==null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Department with id " + id + " not found.");
+        Optional<Department> departmentOptional = departmentRepository.findById(id);
+        if(departmentOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Department with id " + id + " not found.");
 
         for (EmployeeDTO employeeDTO : departmentEmployeesDTO.getEmployees()) {
             Optional<Employee> employeeOptional = employeeRepository.findByName(employeeDTO.getName());
@@ -126,8 +128,8 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public void updateDepartmentInventory(DepartmentInventoryDTO departmentInventoryDTO, Integer id) {
-        Department department = departmentRepository.findById(id).orElse(null);
-        if (department == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+        Optional<Department> departmentOptional = departmentRepository.findById(id);
+        if (departmentOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Department with id " + id + " not found.");
 
         for(ProductDTO productDTO : departmentInventoryDTO.getInventory()){
@@ -141,7 +143,7 @@ public class DepartmentService implements IDepartmentService {
             product.setStock(productDTO.getStock());
             productRepository.save(product);
         }
-
+        Department department = departmentOptional.get();
         departmentRepository.save(department);
     }
 
