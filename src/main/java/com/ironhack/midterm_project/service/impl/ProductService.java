@@ -95,6 +95,10 @@ public class ProductService implements IProductsService {
 
     @Override
     public void deleteAllProduct() {
+        List<Product> products = productRepository.findAll();
+        if (products.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "No products found.");
+
         productRepository.deleteAll();
     }
 }

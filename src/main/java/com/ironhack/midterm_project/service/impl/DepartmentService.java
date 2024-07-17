@@ -212,19 +212,9 @@ public class DepartmentService implements IDepartmentService {
 
     @Override
     public void deleteAllDepartments() {
-//        List<Department> departments = departmentRepository.findAll();
-//        for (Department department : departments) {
-//
-//            List<Employee> employeesList = new ArrayList<>(department.getEmployees());
-//            for (Employee employee : employeesList) {
-//                employeeRepository.deleteById(employee.getId());
-//            }
-//
-//            List<Product> inventoriesList = new ArrayList<>(department.getInventory());
-//            for (Product product : inventoriesList) {
-//                productRepository.deleteById(product.getId());
-//            }
-//        }
+        List<Department> departments = departmentRepository.findAll();
+        if (departments.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "No departments found.");
 
         departmentRepository.deleteAll();
     }

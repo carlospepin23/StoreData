@@ -53,19 +53,21 @@ public class StoreService implements IStoreService {
 
     }
 
-    @Override //CHECK IF CAN BE REFACTORED
-//    @Transactional //SEE IF NEEDED
+    @Override
+    @Transactional //to avoid adding wrong stuff
     public void addNewStore(Store store) {
+        // ensure the store doesn't already exist
         Optional<Store> storeOptional = storeRepository.findByName(store.getName());
         if (storeOptional.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Store with name " + store.getName() + " already exists.");
         } else {
+            // ensure its departments don't already exist
             for (Department department : store.getDepartments()) {
                 Optional<Department> departmentOptional = departmentRepository.findByName(department.getName());
                 if (departmentOptional.isPresent()) {
                     throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with name " + department.getName() + " already exists.");
                 } else {
-                    // Before saving the department, ensure its employees and products don't already exist
+                    // ensure its employees don't already exist
                     for (Employee employee : department.getEmployees()) {
                         Optional<Employee> employeeOptional = employeeRepository.findByName(employee.getName());
                         if (employeeOptional.isPresent()) {
@@ -79,22 +81,20 @@ public class StoreService implements IStoreService {
                             }
                         }
                     }
+                    // ensure its products don't already exist
                     for (Product product : department.getInventory()) {
                         Optional<Product> productOptional = productRepository.findByName(product.getName());
                         if (productOptional.isPresent()) {
                             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A product with the name " + product.getName() + " already exists.");
                         }
                     }
-                    // Save each employee and product before saving the department
-                    for(Employee employee : department.getEmployees()) {
-                        employeeRepository.save(employee);
-                    }
-                    for(Product product : department.getInventory()) {
-                        productRepository.save(product);
-                    }
-
-                    departmentRepository.save(department);
                 }
+            }
+            // set the store departments store's id
+            store.storeSetter();
+            // set the department employees department's id
+            for (Department department: store.getDepartments()){
+                department.departmentSetter();
             }
             storeRepository.save(store);
         }
@@ -165,6 +165,9 @@ public class StoreService implements IStoreService {
 
     @Override
     public void deleteAllStores() {
+        List<Store> stores = storeRepository.findAll();
+        if (stores.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "No stores found.");
         storeRepository.deleteAll();
     }
 

@@ -94,6 +94,9 @@ public class SellerService implements ISellerService {
 
     @Override
     public void deleteAllSellers() {
+        List<Seller> sellers = sellerRepository.findAll();
+        if (sellers.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "No sellers found.");
         sellerRepository.deleteAll();
     }
 }

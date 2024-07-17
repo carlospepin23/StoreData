@@ -79,9 +79,9 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void deleteAllEmployees() {
-//        List<Employee> employees = employeeRepository.findAll();
-//        if (employees.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-//                "There are no employees to delete.");
+        List<Employee> employees = employeeRepository.findAll();
+        if (employees.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "No employees found.");
 //
 //        for (Employee employee : employees) {
 //            List<Department> departmentsByEmployeeId=departmentRepository.findAllByEmployeesEmployeeId(employee.getId());
