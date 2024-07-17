@@ -1,20 +1,12 @@
 package com.ironhack.midterm_project.controller.impl;
 
-import com.ironhack.midterm_project.controller.dto.department_dto.DepartmentDTO;
-import com.ironhack.midterm_project.controller.dto.department_dto.DepartmentEmployeesDTO;
-import com.ironhack.midterm_project.controller.dto.department_dto.DepartmentInventoryDTO;
-import com.ironhack.midterm_project.controller.dto.department_dto.DepartmentNameDTO;
-import com.ironhack.midterm_project.controller.dto.product_dto.ProductDTO;
-import com.ironhack.midterm_project.controller.dto.product_dto.ProductNameDTO;
-import com.ironhack.midterm_project.controller.dto.product_dto.ProductPriceDTO;
-import com.ironhack.midterm_project.controller.dto.product_dto.ProductStockDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentEmployeesDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentInventoryDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentNameDTO;
 import com.ironhack.midterm_project.controller.interfaces.IDepartmentController;
-import com.ironhack.midterm_project.controller.interfaces.IProductController;
 import com.ironhack.midterm_project.model.Department;
-import com.ironhack.midterm_project.model.Employee;
-import com.ironhack.midterm_project.model.Product;
 import com.ironhack.midterm_project.service.impl.DepartmentService;
-import com.ironhack.midterm_project.service.impl.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

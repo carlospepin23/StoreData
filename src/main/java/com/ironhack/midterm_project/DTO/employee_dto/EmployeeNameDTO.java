@@ -1,4 +1,4 @@
-package com.ironhack.midterm_project.controller.dto.department_dto;
+package com.ironhack.midterm_project.DTO.employee_dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class DepartmentNameDTO {
+public class EmployeeNameDTO {
     @NotBlank(message = "Name cannot be blank")
     private String name;
 }

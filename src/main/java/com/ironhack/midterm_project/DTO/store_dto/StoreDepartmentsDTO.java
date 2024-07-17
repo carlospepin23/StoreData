@@ -1,7 +1,6 @@
-package com.ironhack.midterm_project.controller.dto.store_dto;
+package com.ironhack.midterm_project.DTO.store_dto;
 
-import com.ironhack.midterm_project.controller.dto.department_dto.DepartmentDTO;
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentDTO;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;

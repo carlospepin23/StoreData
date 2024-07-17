@@ -1,9 +1,9 @@
 package com.ironhack.midterm_project.service.interfaces;
 
-import com.ironhack.midterm_project.controller.dto.product_dto.ProductDTO;
-import com.ironhack.midterm_project.controller.dto.product_dto.ProductNameDTO;
-import com.ironhack.midterm_project.controller.dto.product_dto.ProductPriceDTO;
-import com.ironhack.midterm_project.controller.dto.product_dto.ProductStockDTO;
+import com.ironhack.midterm_project.DTO.product_dto.ProductDTO;
+import com.ironhack.midterm_project.DTO.product_dto.ProductNameDTO;
+import com.ironhack.midterm_project.DTO.product_dto.ProductPriceDTO;
+import com.ironhack.midterm_project.DTO.product_dto.ProductStockDTO;
 import com.ironhack.midterm_project.model.Product;
 
 import java.util.List;

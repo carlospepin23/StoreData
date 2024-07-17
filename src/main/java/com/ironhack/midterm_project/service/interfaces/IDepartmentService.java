@@ -1,6 +1,9 @@
 package com.ironhack.midterm_project.service.interfaces;
 
-import com.ironhack.midterm_project.controller.dto.department_dto.*;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentEmployeesDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentInventoryDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentNameDTO;
 import com.ironhack.midterm_project.model.Department;
 
 import java.util.List;

@@ -1,11 +1,11 @@
 package com.ironhack.midterm_project.service.interfaces;
 
 //import com.ironhack.midterm_project.model.Employee;
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeNameDTO;
-import com.ironhack.midterm_project.controller.dto.seller_dto.SellerDTO;
-import com.ironhack.midterm_project.controller.dto.seller_dto.SellerEmailDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeNameDTO;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerDTO;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerEmailDTO;
 //import com.ironhack.midterm_project.controller.dto.seller_dto.SellerNameDTO;
-import com.ironhack.midterm_project.controller.dto.seller_dto.SellerSalesDTO;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerSalesDTO;
 import com.ironhack.midterm_project.model.Seller;
 
 import java.util.List;

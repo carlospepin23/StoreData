@@ -1,9 +1,9 @@
 package com.ironhack.midterm_project.controller.impl;
 
-import com.ironhack.midterm_project.controller.dto.store_dto.StoreDTO;
-import com.ironhack.midterm_project.controller.dto.store_dto.StoreDepartmentsDTO;
-import com.ironhack.midterm_project.controller.dto.store_dto.StoreLocationDTO;
-import com.ironhack.midterm_project.controller.dto.store_dto.StoreNameDTO;
+import com.ironhack.midterm_project.DTO.store_dto.StoreDTO;
+import com.ironhack.midterm_project.DTO.store_dto.StoreDepartmentsDTO;
+import com.ironhack.midterm_project.DTO.store_dto.StoreLocationDTO;
+import com.ironhack.midterm_project.DTO.store_dto.StoreNameDTO;
 
 import com.ironhack.midterm_project.controller.interfaces.IStoreController;
 

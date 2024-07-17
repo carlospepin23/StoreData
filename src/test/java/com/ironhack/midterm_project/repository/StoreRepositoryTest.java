@@ -1,7 +1,6 @@
 package com.ironhack.midterm_project.repository;
 
 import com.ironhack.midterm_project.model.*;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class StoreRepositoryTest {
@@ -35,22 +32,23 @@ class StoreRepositoryTest {
         List<Employee> employees = new ArrayList<>();
         employees.add(new Employee("Juan"));
         employees.add(new Seller("Pedro","pedro@gmail.com",53));
-        employeeRepository.saveAll(employees);
 
         List<Product> products = new ArrayList<>();
         products.add(new Product("Milk", 1.5, 50));
         products.add(new Product("Coca-Cola", 2.5,10));
         products.add(new Product("Ice", 0.25,100));
-        productRepository.saveAll(products);
 
         List<Department> departments = new ArrayList<>();
         departments.add(new Department("Food",
                 employees,
                 products));
-        departmentRepository.saveAll(departments);
 
         store = new Store("Hugo-Market", "San Juan", departments);
+
         storeRepository.save(store);
+        departmentRepository.saveAll(departments);
+        employeeRepository.saveAll(employees);
+        productRepository.saveAll(products);
     }
 
     @Test
