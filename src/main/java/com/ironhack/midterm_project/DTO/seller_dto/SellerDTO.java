@@ -1,9 +1,8 @@
-package com.ironhack.midterm_project.controller.dto.seller_dto;
+package com.ironhack.midterm_project.DTO.seller_dto;
 
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDTO;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

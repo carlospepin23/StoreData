@@ -1,4 +1,4 @@
-package com.ironhack.midterm_project.controller.dto.product_dto;
+package com.ironhack.midterm_project.DTO.product_dto;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;

@@ -1,7 +1,10 @@
 package com.ironhack.midterm_project.controller.impl;
 
-import com.ironhack.midterm_project.controller.dto.product_dto.*;
 import com.ironhack.midterm_project.controller.interfaces.IProductController;
+import com.ironhack.midterm_project.DTO.product_dto.ProductDTO;
+import com.ironhack.midterm_project.DTO.product_dto.ProductNameDTO;
+import com.ironhack.midterm_project.DTO.product_dto.ProductPriceDTO;
+import com.ironhack.midterm_project.DTO.product_dto.ProductStockDTO;
 import com.ironhack.midterm_project.model.Product;
 import com.ironhack.midterm_project.service.impl.ProductService;
 import jakarta.validation.Valid;

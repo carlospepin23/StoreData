@@ -1,7 +1,7 @@
 package com.ironhack.midterm_project.controller.interfaces;
 
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeDTO;
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeNameDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeNameDTO;
 import com.ironhack.midterm_project.model.Employee;
 
 import java.util.List;

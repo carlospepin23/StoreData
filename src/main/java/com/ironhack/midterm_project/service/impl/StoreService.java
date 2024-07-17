@@ -1,13 +1,13 @@
 package com.ironhack.midterm_project.service.impl;
 
-import com.ironhack.midterm_project.controller.dto.department_dto.DepartmentDTO;
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeDTO;
-import com.ironhack.midterm_project.controller.dto.product_dto.ProductDTO;
-import com.ironhack.midterm_project.controller.dto.seller_dto.SellerDTO;
-import com.ironhack.midterm_project.controller.dto.store_dto.StoreDTO;
-import com.ironhack.midterm_project.controller.dto.store_dto.StoreDepartmentsDTO;
-import com.ironhack.midterm_project.controller.dto.store_dto.StoreLocationDTO;
-import com.ironhack.midterm_project.controller.dto.store_dto.StoreNameDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDTO;
+import com.ironhack.midterm_project.DTO.product_dto.ProductDTO;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerDTO;
+import com.ironhack.midterm_project.DTO.store_dto.StoreDTO;
+import com.ironhack.midterm_project.DTO.store_dto.StoreDepartmentsDTO;
+import com.ironhack.midterm_project.DTO.store_dto.StoreLocationDTO;
+import com.ironhack.midterm_project.DTO.store_dto.StoreNameDTO;
 import com.ironhack.midterm_project.model.*;
 import com.ironhack.midterm_project.repository.*;
 import com.ironhack.midterm_project.service.interfaces.IStoreService;
@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class StoreService implements IStoreService {
 
     @Autowired
@@ -52,8 +53,8 @@ public class StoreService implements IStoreService {
 
     }
 
-    @Override
-    @Transactional // ensures the method is completed or rolled back if there is an error
+    @Override //CHECK IF CAN BE REFACTORED
+//    @Transactional //SEE IF NEEDED
     public void addNewStore(Store store) {
         Optional<Store> storeOptional = storeRepository.findByName(store.getName());
         if (storeOptional.isPresent()) {
@@ -152,9 +153,14 @@ public class StoreService implements IStoreService {
         storeRepository.save(store);
     }
 
-    @Override //FIX
+    @Override
     public void deleteStore(Integer id) {
+        Optional<Store> storeOptional = storeRepository.findById(id);
+        if (storeOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Store with id " + id + " not found.");
+
         storeRepository.deleteById(id);
+
     }
 
     @Override

@@ -1,8 +1,6 @@
 package com.ironhack.midterm_project.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -25,6 +23,16 @@ public class Seller extends Employee {
         super(name);
         this.email = email;
         this.sales = sales;
+    }
+
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "id=" + getId() +
+                ", name='" + getName() + '\'' +
+                ", email='" + email + '\'' +
+                ", sales=" + sales +
+                '}';
     }
 
 }

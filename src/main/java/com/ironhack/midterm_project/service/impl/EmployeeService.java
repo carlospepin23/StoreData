@@ -1,13 +1,12 @@
 package com.ironhack.midterm_project.service.impl;
 
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeDTO;
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeNameDTO;
-import com.ironhack.midterm_project.model.Department;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeNameDTO;
 import com.ironhack.midterm_project.model.Employee;
-import com.ironhack.midterm_project.model.Seller;
 import com.ironhack.midterm_project.repository.DepartmentRepository;
 import com.ironhack.midterm_project.repository.EmployeeRepository;
 import com.ironhack.midterm_project.service.interfaces.IEmployeeService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class EmployeeService implements IEmployeeService {
 
     @Autowired

@@ -1,8 +1,10 @@
 package com.ironhack.midterm_project.controller.impl;
 
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeNameDTO;
-import com.ironhack.midterm_project.controller.dto.seller_dto.*;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeNameDTO;
 import com.ironhack.midterm_project.controller.interfaces.ISellerController;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerDTO;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerEmailDTO;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerSalesDTO;
 import com.ironhack.midterm_project.model.Seller;
 import com.ironhack.midterm_project.service.impl.SellerService;
 import jakarta.validation.Valid;

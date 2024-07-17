@@ -1,4 +1,4 @@
-package com.ironhack.midterm_project.controller.dto.seller_dto;
+package com.ironhack.midterm_project.DTO.seller_dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;

@@ -1,12 +1,12 @@
 package com.ironhack.midterm_project.service.impl;
 
-import com.ironhack.midterm_project.controller.dto.department_dto.DepartmentDTO;
-import com.ironhack.midterm_project.controller.dto.department_dto.DepartmentEmployeesDTO;
-import com.ironhack.midterm_project.controller.dto.department_dto.DepartmentInventoryDTO;
-import com.ironhack.midterm_project.controller.dto.department_dto.DepartmentNameDTO;
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeDTO;
-import com.ironhack.midterm_project.controller.dto.product_dto.ProductDTO;
-import com.ironhack.midterm_project.controller.dto.seller_dto.SellerDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentEmployeesDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentInventoryDTO;
+import com.ironhack.midterm_project.DTO.department_dto.DepartmentNameDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDTO;
+import com.ironhack.midterm_project.DTO.product_dto.ProductDTO;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerDTO;
 import com.ironhack.midterm_project.model.Department;
 import com.ironhack.midterm_project.model.Employee;
 import com.ironhack.midterm_project.model.Product;
@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class DepartmentService implements IDepartmentService {
 
     @Autowired
@@ -54,7 +55,7 @@ public class DepartmentService implements IDepartmentService {
     }
 
     @Override
-    @Transactional //makes sure method is completed or rolled back if there is an error
+//    @Transactional //makes sure method is completed or rolled back if there is an error
     public void addNewDepartment(Department department) {
         Optional<Department> departmentOptional = departmentRepository.findByName(department.getName());
         if (departmentOptional.isPresent()) {
@@ -189,23 +190,23 @@ public class DepartmentService implements IDepartmentService {
         departmentRepository.save(department);
     }
 
-    @Override
+    @Override //FIX
     public void deleteDepartment(Integer id) {
         Optional<Department> departmentOptional = departmentRepository.findById(id);
         if (departmentOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Department with id " + id + " not found.");
 
-        Department department = departmentOptional.get();
-        if (department.getEmployees().isEmpty() || department.getInventory().isEmpty()) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                "Department with id " + id + " cannot be deleted because it has employees or inventory.");
+//        Department department = departmentOptional.get();
+//        if (department.getEmployees().isEmpty() || department.getInventory().isEmpty()) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+//                "Department with id " + id + " cannot be deleted because it has employees or inventory.");
 
         departmentRepository.deleteById(id);
-        for(Employee employee : department.getEmployees()){
-            employeeRepository.delete(employee);
-        }
-        for(Product product : department.getInventory()){
-            productRepository.delete(product);
-        }
+//        for(Employee employee : department.getEmployees()){
+//            employeeRepository.delete(employee);
+//        }
+//        for(Product product : department.getInventory()){
+//            productRepository.delete(product);
+//        }
 
     }
 

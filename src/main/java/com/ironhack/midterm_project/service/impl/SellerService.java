@@ -1,13 +1,14 @@
 package com.ironhack.midterm_project.service.impl;
 
-import com.ironhack.midterm_project.controller.dto.employee_dto.EmployeeNameDTO;
-import com.ironhack.midterm_project.controller.dto.seller_dto.SellerDTO;
-import com.ironhack.midterm_project.controller.dto.seller_dto.SellerEmailDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeNameDTO;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerDTO;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerEmailDTO;
 //import com.ironhack.midterm_project.controller.dto.seller_dto.SellerNameDTO;
-import com.ironhack.midterm_project.controller.dto.seller_dto.SellerSalesDTO;
+import com.ironhack.midterm_project.DTO.seller_dto.SellerSalesDTO;
 import com.ironhack.midterm_project.model.Seller;
 import com.ironhack.midterm_project.repository.SellerRepository;
 import com.ironhack.midterm_project.service.interfaces.ISellerService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class SellerService implements ISellerService {
 
     @Autowired
