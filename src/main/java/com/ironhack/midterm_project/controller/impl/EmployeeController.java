@@ -58,11 +58,12 @@ public class EmployeeController implements IEmployeeController {
         employeeService.deleteEmployee(id);
     }
 
-    @DeleteMapping("/employees/all")
+    @DeleteMapping("/employees/all/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAllEmployees() {
-        employeeService.deleteAllEmployees();
+    public void deleteAllEmployeesExceptId(@PathVariable Integer id) {
+        employeeService.deleteAllEmployeesExceptId(id);
     }
+
 }
 
 

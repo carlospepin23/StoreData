@@ -5,6 +5,7 @@ import com.ironhack.midterm_project.DTO.product_dto.ProductNameDTO;
 import com.ironhack.midterm_project.DTO.product_dto.ProductPriceDTO;
 import com.ironhack.midterm_project.DTO.product_dto.ProductStockDTO;
 
+import com.ironhack.midterm_project.model.Employee;
 import com.ironhack.midterm_project.model.Product;
 import com.ironhack.midterm_project.repository.ProductRepository;
 import com.ironhack.midterm_project.service.interfaces.IProductsService;
@@ -87,6 +88,8 @@ public class ProductService implements IProductsService {
 
     @Override
     public void deleteProduct(Integer id) {
+        if(productRepository.findAll().size()==1) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                "Cannot delete the only product in the database.");
         Optional<Product> productOptional = productRepository.findById(id);
         if (productOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Product with id " + id + " not found.");
@@ -94,11 +97,19 @@ public class ProductService implements IProductsService {
     }
 
     @Override
-    public void deleteAllProduct() {
+    public void deleteAllProductsExceptId(Integer id) {
         List<Product> products = productRepository.findAll();
         if (products.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "No products found.");
 
-        productRepository.deleteAll();
+        Optional<Product> productOptional = productRepository.findById(id);
+        if (productOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Product with id " + id + " not found.");
+
+        for (Product product : products) {
+            if (!product.getId().equals(id)) {
+                productRepository.delete(product);
+            }
+        }
     }
 }

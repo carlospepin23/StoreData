@@ -69,12 +69,10 @@ public class DepartmentService implements IDepartmentService {
                 } else {
 
                     if (employee instanceof Seller seller) {
-
                         if (sellerRepository.findByEmail(seller.getEmail()).isPresent()) {
                             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A seller with the email " + seller.getEmail() + " already exists.");
                         }
                     }
-                    employeeRepository.save(employee);
                 }
             }
 
@@ -82,10 +80,9 @@ public class DepartmentService implements IDepartmentService {
                 Optional<Product> productOptional = productRepository.findByName(product.getName());
                 if (productOptional.isPresent()) {
                     throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "A product with the name " + product.getName() + " already exists.");
-                } else {
-                    productRepository.save(product);
                 }
             }
+            department.departmentSetter();
             departmentRepository.save(department);
         }
     }
@@ -192,31 +189,31 @@ public class DepartmentService implements IDepartmentService {
 
     @Override //FIX
     public void deleteDepartment(Integer id) {
+        if(departmentRepository.findAll().size()==1) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                "Cannot delete the only department in the database.");
         Optional<Department> departmentOptional = departmentRepository.findById(id);
         if (departmentOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Department with id " + id + " not found.");
-
-//        Department department = departmentOptional.get();
-//        if (department.getEmployees().isEmpty() || department.getInventory().isEmpty()) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-//                "Department with id " + id + " cannot be deleted because it has employees or inventory.");
-
         departmentRepository.deleteById(id);
-//        for(Employee employee : department.getEmployees()){
-//            employeeRepository.delete(employee);
-//        }
-//        for(Product product : department.getInventory()){
-//            productRepository.delete(product);
-//        }
 
     }
 
     @Override
-    public void deleteAllDepartments() {
+    public void deleteAllDepartmentsExceptId(Integer id) {
         List<Department> departments = departmentRepository.findAll();
         if (departments.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "No departments found.");
 
-        departmentRepository.deleteAll();
+        Optional<Department> departmentOptional = departmentRepository.findById(id);
+        if (departmentOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Department with id " + id + " not found.");
+
+        for (Department department : departments) {
+            if (!department.getId().equals(id)) {
+                departmentRepository.delete(department);
+            }
+        }
     }
+
 
 }

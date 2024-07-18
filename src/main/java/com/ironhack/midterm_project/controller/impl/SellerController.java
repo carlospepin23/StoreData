@@ -72,9 +72,9 @@ public class SellerController implements ISellerController {
         sellerService.deleteSeller(id);
     }
 
-    @DeleteMapping("/sellers/all")
+    @DeleteMapping("/sellers/all/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAllSellers() {
-        sellerService.deleteAllSellers();
+    public void deleteAllSellersExceptId(@PathVariable Integer id) {
+        sellerService.deleteAllSellersExceptId(id);
     }
 }

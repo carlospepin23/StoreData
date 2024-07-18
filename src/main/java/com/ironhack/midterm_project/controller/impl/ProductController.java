@@ -72,9 +72,9 @@ public class ProductController implements IProductController {
         productService.deleteProduct(id);
     }
 
-    @DeleteMapping("/products/all")
+    @DeleteMapping("/products/all/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAllProducts() {
-        productService.deleteAllProduct();
+    public void deleteAllProductsExceptId(@PathVariable Integer id) {
+        productService.deleteAllProductsExceptId(id);
     }
 }

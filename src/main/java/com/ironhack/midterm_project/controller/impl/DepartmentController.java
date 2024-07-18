@@ -72,10 +72,9 @@ public class DepartmentController implements IDepartmentController {
         departmentService.deleteDepartment(id);
     }
 
-    @DeleteMapping("/departments/all")
+    @DeleteMapping("/departments/all/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAllDepartments() {
-        departmentService.deleteAllDepartments();
-
+    public void deleteAllDepartmentsExceptId(@PathVariable Integer id) {
+        departmentService.deleteAllDepartmentsExceptId(id);
     }
 }

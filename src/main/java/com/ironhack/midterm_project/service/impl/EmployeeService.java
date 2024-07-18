@@ -71,6 +71,10 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public void deleteEmployee(Integer id) {
+        if(employeeRepository.findAll().size()==1){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Cannot delete the only employee in the database.");
+        }
         Optional<Employee> employeeOptional = employeeRepository.findById(id);
         if (employeeOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Employee with id " + id + " not found.");
@@ -78,20 +82,20 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public void deleteAllEmployees() {
+    public void deleteAllEmployeesExceptId(Integer id) {
         List<Employee> employees = employeeRepository.findAll();
         if (employees.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "No employees found.");
-//
-//        for (Employee employee : employees) {
-//            List<Department> departmentsByEmployeeId=departmentRepository.findAllByEmployeesEmployeeId(employee.getId());
-//            for (Department department : departmentsByEmployeeId) {
-//                department.getEmployees().remove(employee);
-//                departmentRepository.save(department);
-//            }
-//
-//        }
-        employeeRepository.deleteAll();
 
+        Optional<Employee> employeeOptional = employeeRepository.findById(id);
+        if (employeeOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Employee with id " + id + " not found.");
+
+        for (Employee employee : employees) {
+            if (!employee.getId().equals(id)) {
+                employeeRepository.delete(employee);
+            }
+        }
     }
+
 }

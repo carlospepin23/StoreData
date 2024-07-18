@@ -5,6 +5,7 @@ import com.ironhack.midterm_project.DTO.seller_dto.SellerDTO;
 import com.ironhack.midterm_project.DTO.seller_dto.SellerEmailDTO;
 //import com.ironhack.midterm_project.controller.dto.seller_dto.SellerNameDTO;
 import com.ironhack.midterm_project.DTO.seller_dto.SellerSalesDTO;
+import com.ironhack.midterm_project.model.Employee;
 import com.ironhack.midterm_project.model.Seller;
 import com.ironhack.midterm_project.repository.SellerRepository;
 import com.ironhack.midterm_project.service.interfaces.ISellerService;
@@ -86,6 +87,8 @@ public class SellerService implements ISellerService {
 
     @Override
     public void deleteSeller(Integer id) {
+        if(sellerRepository.findAll().size()==1) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                "Cannot delete the only seller in the database.");
         Optional<Seller> sellerOptional = sellerRepository.findById(id);
         if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Seller with id " + id + " not found.");
@@ -93,10 +96,19 @@ public class SellerService implements ISellerService {
     }
 
     @Override
-    public void deleteAllSellers() {
+    public void deleteAllSellersExceptId(Integer id) {
         List<Seller> sellers = sellerRepository.findAll();
         if (sellers.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "No sellers found.");
-        sellerRepository.deleteAll();
+
+        Optional<Seller> sellerOptional = sellerRepository.findById(id);
+        if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Seller with id " + id + " not found.");
+
+        for (Seller seller : sellers) {
+            if (!seller.getId().equals(id)) {
+                sellerRepository.delete(seller);
+            }
+        }
     }
 }
