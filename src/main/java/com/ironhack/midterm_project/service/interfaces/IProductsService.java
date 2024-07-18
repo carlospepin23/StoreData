@@ -1,5 +1,4 @@
 package com.ironhack.midterm_project.service.interfaces;
-
 import com.ironhack.midterm_project.DTO.product_dto.ProductDTO;
 import com.ironhack.midterm_project.DTO.product_dto.ProductNameDTO;
 import com.ironhack.midterm_project.DTO.product_dto.ProductPriceDTO;

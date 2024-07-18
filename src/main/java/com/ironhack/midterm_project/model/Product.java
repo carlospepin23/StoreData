@@ -26,6 +26,7 @@ public class Product {
     @Min(value = 0, message = "The stock must be equal or greater than zero (0)")
     private Integer stock;
 
+    @NotNull(message = "The product must belong to a department")
     @JsonBackReference
     @ManyToOne @JoinColumn(name = "department_id")
     private Department department;

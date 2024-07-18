@@ -3,6 +3,7 @@ package com.ironhack.midterm_project.model;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,6 +24,7 @@ public class Employee {
     @NotBlank(message = "The employee must have a name")
     private String name;
 
+    @NotNull(message = "The employee must belong to a department")
     @JsonBackReference
     @ManyToOne @JoinColumn(name = "department_id")
     private Department department;

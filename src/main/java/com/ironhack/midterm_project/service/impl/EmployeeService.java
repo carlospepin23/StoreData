@@ -4,6 +4,7 @@ import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDTO;
 import com.ironhack.midterm_project.DTO.employee_dto.EmployeeNameDTO;
 import com.ironhack.midterm_project.model.Department;
 import com.ironhack.midterm_project.model.Employee;
+import com.ironhack.midterm_project.model.Seller;
 import com.ironhack.midterm_project.repository.DepartmentRepository;
 import com.ironhack.midterm_project.repository.EmployeeRepository;
 import com.ironhack.midterm_project.service.interfaces.IEmployeeService;
@@ -39,6 +40,11 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void addNewEmployee(Employee employee) {
         alreadyExists(employee);
+        Optional<Department> departmentOptional = departmentRepository.findById(employee.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + employee.getDepartment().getId() + " not found.");
+        }
+
         employeeRepository.save(employee);
     }
 
@@ -125,6 +131,9 @@ public class EmployeeService implements IEmployeeService {
     public void alreadyExists(Employee employee){
         Optional<Employee> employeeOptional = employeeRepository.findByName(employee.getName());
         if (employeeOptional.isPresent()) {
+            if(employee instanceof Seller seller){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The seller " + seller.getName() + " already exists.");
+            }
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The employee " + employee.getName() + " already exists.");
         }
     }

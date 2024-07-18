@@ -96,20 +96,20 @@ public class SellerService implements ISellerService {
         return sellerOptional.get();
     }
 
-    private Seller exceptionMsgSeller(String name){
+    private Seller exceptionMsgSeller(String email){
         List<Seller> sellers = sellerRepository.findAll();
         if (sellers.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "No sellers found.");
 
-        Optional<Seller> sellerOptional = sellerRepository.findByName(name);
+        Optional<Seller> sellerOptional = sellerRepository.findByEmail(email);
         if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Seller with name " + name + " not found.");
+                "Seller with email " + email + " not found.");
 
         return sellerOptional.get();
     }
 
     public void alreadyExists(Seller seller){
-        Optional<Seller> sellerOptional = sellerRepository.findByName(seller.getName());
+        Optional<Seller> sellerOptional = sellerRepository.findByEmail(seller.getEmail());
         if (sellerOptional.isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The seller " + seller.getName() + " already exists.");
         }

@@ -15,7 +15,7 @@ import java.util.List;
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+//    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer id;
     @NotBlank(message = "The store must have a name")
     private String name;
@@ -25,7 +25,6 @@ public class Store {
 
     @NotEmpty(message = "The store must have at least one department")
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Department> departments;
 
     public Store(String name, String location, List<Department> departments) {

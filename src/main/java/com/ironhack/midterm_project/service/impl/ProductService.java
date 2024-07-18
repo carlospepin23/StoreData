@@ -41,6 +41,11 @@ public class ProductService implements IProductsService {
     @Override
     public void addNewProduct(Product product) {
         alreadyExists(product);
+        Optional<Department> departmentOptional = departmentRepository.findById(product.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + product.getDepartment().getId() + " not found.");
+        }
+
         productRepository.save(product);
     }
 
