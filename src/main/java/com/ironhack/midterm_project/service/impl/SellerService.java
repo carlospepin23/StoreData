@@ -3,9 +3,7 @@ package com.ironhack.midterm_project.service.impl;
 import com.ironhack.midterm_project.DTO.employee_dto.EmployeeNameDTO;
 import com.ironhack.midterm_project.DTO.seller_dto.SellerDTO;
 import com.ironhack.midterm_project.DTO.seller_dto.SellerEmailDTO;
-//import com.ironhack.midterm_project.controller.dto.seller_dto.SellerNameDTO;
 import com.ironhack.midterm_project.DTO.seller_dto.SellerSalesDTO;
-import com.ironhack.midterm_project.model.Employee;
 import com.ironhack.midterm_project.model.Seller;
 import com.ironhack.midterm_project.repository.SellerRepository;
 import com.ironhack.midterm_project.service.interfaces.ISellerService;
@@ -32,53 +30,42 @@ public class SellerService implements ISellerService {
 
     @Override
     public Seller getSellerById(Integer id) {
-        Optional<Seller> sellerOptional = sellerRepository.findById(id);
-        if(sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Seller with id " + id + " not found.");
-        return sellerOptional.get();
+        return exceptionMsgSeller(id);
     }
-
-//    @Override
-//    public void addNewSeller(Seller seller) {
-//        sellerRepository.save(seller);
-//    }
 
     @Override
     public void updateSellerName(EmployeeNameDTO sellerNameDTO, Integer id) {
-        Optional<Seller> sellerOptional = sellerRepository.findById(id);
-        if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Seller with id " + id + " not found.");
-        Seller seller = sellerOptional.get();
+        Seller seller = exceptionMsgSeller(id);
         seller.setName(sellerNameDTO.getName());
         sellerRepository.save(seller);
     }
 
     @Override
     public void updateSellerEmail(SellerEmailDTO sellerEmailDTO, Integer id) {
-        Optional<Seller> sellerOptional = sellerRepository.findById(id);
-        if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Seller with id " + id + " not found.");
-        Seller seller = sellerOptional.get();
+        Seller seller = exceptionMsgSeller(id);
         seller.setEmail(sellerEmailDTO.getEmail());
         sellerRepository.save(seller);
     }
 
     @Override
     public void updateSellerSales(SellerSalesDTO sellerSalesDTO, Integer id) {
-        Optional<Seller> sellerOptional = sellerRepository.findById(id);
-        if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Seller with id " + id + " not found.");
-        Seller seller = sellerOptional.get();
+        Seller seller = exceptionMsgSeller(id);
         seller.setSales(sellerSalesDTO.getSales());
         sellerRepository.save(seller);
     }
 
     @Override
     public void updateSellerInformation(SellerDTO sellerDTO, Integer id) {
-        Optional<Seller> sellerOptional = sellerRepository.findById(id);
-        if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Seller with id " + id + " not found.");
-        Seller seller = sellerOptional.get();
+        Seller seller = exceptionMsgSeller(id);
+        seller.setName(sellerDTO.getName());
+        seller.setEmail(sellerDTO.getEmail());
+        seller.setSales(sellerDTO.getSales());
+        sellerRepository.save(seller);
+    }
+
+    @Override
+    public void updateSellerInformation(SellerDTO sellerDTO, String name) {
+        Seller seller = exceptionMsgSeller(name);
         seller.setName(sellerDTO.getName());
         seller.setEmail(sellerDTO.getEmail());
         seller.setSales(sellerDTO.getSales());
@@ -87,16 +74,17 @@ public class SellerService implements ISellerService {
 
     @Override
     public void deleteSeller(Integer id) {
-        if(sellerRepository.findAll().size()==1) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                "Cannot delete the only seller in the database.");
-        Optional<Seller> sellerOptional = sellerRepository.findById(id);
-        if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
-                "Seller with id " + id + " not found.");
+        exceptionMsgSeller(id);
         sellerRepository.deleteById(id);
     }
 
     @Override
     public void deleteAllSellersExceptId(Integer id) {
+        exceptionMsgSeller(id);
+        sellerRepository.deleteAllByIdNot(id);
+    }
+
+    private Seller exceptionMsgSeller(Integer id){
         List<Seller> sellers = sellerRepository.findAll();
         if (sellers.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "No sellers found.");
@@ -105,10 +93,25 @@ public class SellerService implements ISellerService {
         if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Seller with id " + id + " not found.");
 
-        for (Seller seller : sellers) {
-            if (!seller.getId().equals(id)) {
-                sellerRepository.delete(seller);
-            }
+        return sellerOptional.get();
+    }
+
+    private Seller exceptionMsgSeller(String name){
+        List<Seller> sellers = sellerRepository.findAll();
+        if (sellers.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "No sellers found.");
+
+        Optional<Seller> sellerOptional = sellerRepository.findByName(name);
+        if (sellerOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Seller with name " + name + " not found.");
+
+        return sellerOptional.get();
+    }
+
+    public void alreadyExists(Seller seller){
+        Optional<Seller> sellerOptional = sellerRepository.findByName(seller.getName());
+        if (sellerOptional.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The seller " + seller.getName() + " already exists.");
         }
     }
 }

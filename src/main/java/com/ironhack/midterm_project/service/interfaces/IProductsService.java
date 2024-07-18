@@ -16,6 +16,7 @@ public interface IProductsService {
     void updateProductPrice(ProductPriceDTO productPriceDTO, Integer id);
     void updateProductStock(ProductStockDTO productStockDTO, Integer id);
     void updateProductInformation(ProductDTO productDTO, Integer id);
+    void updateProductInformation(ProductDTO productDTO, String name);
     void deleteProduct(Integer id);
     void deleteAllProductsExceptId(Integer id);
 
