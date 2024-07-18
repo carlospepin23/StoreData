@@ -12,7 +12,8 @@ public interface IEmployeeService {
     void addNewEmployee(Employee employee);
     void updateEmployeeName(EmployeeNameDTO employeeNameDTO, Integer id);
     void updateEmployeeInformation(EmployeeDTO employeeDTO, Integer id);
+    void updateEmployeeInformation(EmployeeDTO employeeDTO, String name);
     void deleteEmployee(Integer id);
-    void deleteAllEmployees();
+    void deleteAllEmployeesExceptId(Integer id);
 
 }

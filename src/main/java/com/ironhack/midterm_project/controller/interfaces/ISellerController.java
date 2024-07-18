@@ -19,5 +19,5 @@ public interface ISellerController {
     void updateSellerSales(SellerSalesDTO sellerSalesDTO, Integer id);
     void updateSellerInformation(SellerDTO sellerDTO, Integer id);
     void deleteSeller(Integer id);
-    void deleteAllSellers();
+    void deleteAllSellersExceptId(Integer id);
 }

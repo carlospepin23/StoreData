@@ -35,7 +35,7 @@ public class Store {
         storeSetter();
     }
 
-    private void storeSetter() {
+    public void storeSetter() {
         for (Department department : departments) {
             department.setStore(this);
         }

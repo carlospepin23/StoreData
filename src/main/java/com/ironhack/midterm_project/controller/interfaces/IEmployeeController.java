@@ -13,5 +13,5 @@ public interface IEmployeeController {
     void updateEmployeeName(EmployeeNameDTO employeeNameDTO, Integer id);
     void updateEmployeeInformation(EmployeeDTO employeeDTO, Integer id);
     void deleteEmployee(Integer id);
-    void deleteAllEmployees();
+    void deleteAllEmployeesExceptId(Integer id);
 }

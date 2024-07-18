@@ -1,6 +1,7 @@
 package com.ironhack.midterm_project.repository;
 
 import com.ironhack.midterm_project.model.*;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,20 +11,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class StoreRepositoryTest {
 
     @Autowired
     StoreRepository storeRepository;
-
-    @Autowired
-    DepartmentRepository departmentRepository;
-
-    @Autowired
-    EmployeeRepository employeeRepository;
-
-    @Autowired
-    ProductRepository productRepository;
 
     private Store store;
 
@@ -46,53 +40,49 @@ class StoreRepositoryTest {
         store = new Store("Hugo-Market", "San Juan", departments);
 
         storeRepository.save(store);
-        departmentRepository.saveAll(departments);
-        employeeRepository.saveAll(employees);
-        productRepository.saveAll(products);
+    }
+
+    @AfterEach
+    void tearDown() {
+        storeRepository.deleteAll();
+    }
+
+//    @Test
+//    void test(){
+//
+//    }
+
+    @Test
+    void testSaveStore() {
+
+        List<Employee> employees = new ArrayList<>();
+        Seller seller = new Seller("Willy","wonka@yahoo.com",72);
+        employees.add(seller);
+
+        List<Product> products = new ArrayList<>();
+        Product product = new Product("Chocolate", 0.99,253);
+        products.add(product);
+
+
+        List<Department> departments = new ArrayList<>();
+        Department department= new Department("Sweets", employees, products);
+        departments.add(department);
+
+        Store newStore = new Store("Mini-Market", "Cuba", departments);
+        Store savedStore = storeRepository.save(newStore);
+        assertNotNull(savedStore.getId());
+        assertEquals("Mini-Market", savedStore.getName(), "The store is not saved correctly");
     }
 
     @Test
-    void test(){
-
+    void testFindById() {
+        assertTrue(storeRepository.findById(store.getId()).isPresent(), "The store is not found");
     }
 
-//    @Test
-//    void testSaveStore() {
-//        storeRepository.deleteAll();
-//        departmentRepository.deleteAll();
-//        employeeRepository.deleteAll();
-//        productRepository.deleteAll();
-//
-//        employeeRepository.save(new Seller("Willy","wonka@yahoo.com",72));
-//
-//        productRepository.save(new Product("Chocolate", 0.99,253));
-//
-//        departmentRepository.save(new Department("Sweets",
-//                employeeRepository.findAll(),
-//                productRepository.findAll()));
-//
-//        Store newStore = new Store("Mini-Market", "Cuba", departmentRepository.findAll());
-//        Store savedStore = storeRepository.save(newStore);
-//        assertNotNull(savedStore.getId());
-//        assertEquals("Mini-Market", savedStore.getName(), "The store is not saved correctly");
-//    }
-//
-//    @Test
-//    void testFindById() {
-//        assertTrue(storeRepository.findById(store.getId()).isPresent(), "The store is not found");
-//    }
-//
-//    @Test
-//    void testDeleteStore() {
-//        storeRepository.delete(store);
-//        assertFalse(storeRepository.findById(store.getId()).isPresent(), "The store is not deleted");
-//    }
-//
-//    @AfterEach
-//    void tearDown() {
-//        storeRepository.deleteAll();
-//        departmentRepository.deleteAll();
-//        employeeRepository.deleteAll();
-//        productRepository.deleteAll();
-//    }
+    @Test
+    void testDeleteStore() {
+        storeRepository.delete(store);
+        assertFalse(storeRepository.findById(store.getId()).isPresent(), "The store is not deleted");
+    }
+
 }

@@ -16,7 +16,8 @@ public interface IDepartmentService {
     void updateDepartmentEmployees(DepartmentEmployeesDTO departmentEmployeesDTO, Integer id);
     void updateDepartmentInventory(DepartmentInventoryDTO departmentInventoryDTO, Integer id);
     void updateDepartmentInformation(DepartmentDTO departmentDTO, Integer id);
+    void updateDepartmentInformation(DepartmentDTO departmentDTO, String name);
     void deleteDepartment(Integer id);
-    void deleteAllDepartments();
+    void deleteAllDepartmentsExceptId(Integer id);
 
 }

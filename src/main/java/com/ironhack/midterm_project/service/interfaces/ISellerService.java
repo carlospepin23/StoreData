@@ -18,6 +18,7 @@ public interface ISellerService {
     void updateSellerEmail(SellerEmailDTO sellerEmailDTO, Integer id);
     void updateSellerSales(SellerSalesDTO sellerSalesDTO, Integer id);
     void updateSellerInformation(SellerDTO sellerDTO, Integer id);
+    void updateSellerInformation(SellerDTO sellerDTO, String name);
     void deleteSeller(Integer id);
-    void deleteAllSellers();
+    void deleteAllSellersExceptId(Integer id);
 }

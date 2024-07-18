@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
     Optional<Employee> findByName(String name);
+    void deleteAllByIdNot(Integer id);
 }

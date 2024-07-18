@@ -17,5 +17,5 @@ public interface IProductController {
     void updateProductStock(ProductStockDTO productStockDTO, Integer id);
     void updateProductInformation(ProductDTO productDTO, Integer id);
     void deleteProduct(Integer id);
-    void deleteAllProducts();
+    void deleteAllProductsExceptId(Integer id);
 }

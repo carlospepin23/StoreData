@@ -43,7 +43,7 @@ public class Department {
         departmentSetter();
     }
 
-    private void departmentSetter() {
+    public void departmentSetter() {
         for (Employee employee : this.employees) {
             employee.setDepartment(this);
         }
