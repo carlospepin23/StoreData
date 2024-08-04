@@ -56,38 +56,109 @@ public class EmployeeService implements IEmployeeService {
         employeeRepository.save(employee);
     }
 
+//    @Override
+//    public void updateEmployeeDepartment(EmployeeDepartmentDTO employeeDepartmentDTO, Integer id) {
+//        Employee employee = exceptionMsgEmployee(id);
+//        Optional<Department> departmentOptional = departmentRepository.findById(employeeDepartmentDTO.getDepartment().getId());
+//        if (departmentOptional.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + employeeDepartmentDTO.getDepartment().getId() + " not found.");
+//        }
+//
+//        employee.setDepartment(departmentOptional.get());
+//        employeeRepository.save(employee);
+//    }
+
     @Override
-    public void updateEmployeeDepartment(EmployeeDepartmentDTO employeeDepartmentDTO, Integer id) {
-        Employee employee = exceptionMsgEmployee(id);
-        Optional<Department> departmentOptional = departmentRepository.findById(employeeDepartmentDTO.getDepartment().getId());
-        if (departmentOptional.isEmpty()) {
+    public void updateEmployeeDepartment(EmployeeDepartmentDTO employeeDepartmentDTO, Integer employeeId) {
+        Employee employee = exceptionMsgEmployee(employeeId);
+        Department currentDepartment = employee.getDepartment();
+
+        // Check if the current department will be left without employees
+        if (currentDepartment.getEmployees().size() == 1) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The current department cannot be left without employees");
+        }
+
+        // Fetch the new department entity using the ID from DepartmentDTO
+        Optional<Department> newDepartmentOptional = departmentRepository.findById(employeeDepartmentDTO.getDepartment().getId());
+        if (newDepartmentOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + employeeDepartmentDTO.getDepartment().getId() + " not found.");
         }
 
-        employee.setDepartment(departmentOptional.get());
+        // Update the employee's department
+        employee.setDepartment(newDepartmentOptional.get());
         employeeRepository.save(employee);
     }
+
+//    @Override
+//    public void updateEmployeeInformation(EmployeeDTO employeeDTO, Integer id) {
+//        Employee employee = exceptionMsgEmployee(id);
+//        employee.setName(employeeDTO.getName());
+//
+//
+//        Optional<Department> departmentOptional = departmentRepository.findById(employeeDTO.getDepartment().getId());
+//        if (departmentOptional.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + employeeDTO.getDepartment().getId() + " not found.");
+//        }
+//        employee.setDepartment(departmentOptional.get());
+//        employeeRepository.save(employee);
+//    }
 
     @Override
     public void updateEmployeeInformation(EmployeeDTO employeeDTO, Integer id) {
         Employee employee = exceptionMsgEmployee(id);
         employee.setName(employeeDTO.getName());
+
+        Department currentDepartment = employee.getDepartment();
+
+        // Check if the current department will be left without employees
+        if (currentDepartment.getEmployees().size() == 1) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The current department cannot be left without employees");
+        }
+
+        // Fetch the new department entity using the ID from DepartmentDTO
         Optional<Department> departmentOptional = departmentRepository.findById(employeeDTO.getDepartment().getId());
         if (departmentOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + employeeDTO.getDepartment().getId() + " not found.");
         }
+
+        // Update the employee's department
         employee.setDepartment(departmentOptional.get());
         employeeRepository.save(employee);
     }
+
+//    @Override
+//    public void updateEmployeeInformation(EmployeeDTO employeeDTO, String name) {
+//        Employee employee = exceptionMsgEmployee(name);
+//        employee.setName(employeeDTO.getName());
+//
+//
+//        Optional<Department> departmentOptional = departmentRepository.findById(employeeDTO.getDepartment().getId());
+//        if (departmentOptional.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + employeeDTO.getDepartment().getId() + " not found.");
+//        }
+//        employee.setDepartment(departmentOptional.get());
+//        employeeRepository.save(employee);
+//    }
 
     @Override
     public void updateEmployeeInformation(EmployeeDTO employeeDTO, String name) {
         Employee employee = exceptionMsgEmployee(name);
         employee.setName(employeeDTO.getName());
+
+        Department currentDepartment = employee.getDepartment();
+
+        // Check if the current department will be left without employees
+        if (currentDepartment.getEmployees().size() == 1) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The current department cannot be left without employees");
+        }
+
+        // Fetch the new department entity using the ID from DepartmentDTO
         Optional<Department> departmentOptional = departmentRepository.findById(employeeDTO.getDepartment().getId());
         if (departmentOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + employeeDTO.getDepartment().getId() + " not found.");
         }
+
+        // Update the employee's department
         employee.setDepartment(departmentOptional.get());
         employeeRepository.save(employee);
     }
