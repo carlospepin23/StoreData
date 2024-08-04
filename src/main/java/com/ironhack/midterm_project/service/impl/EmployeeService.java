@@ -1,6 +1,7 @@
 package com.ironhack.midterm_project.service.impl;
 
 import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDepartmentDTO;
 import com.ironhack.midterm_project.DTO.employee_dto.EmployeeNameDTO;
 import com.ironhack.midterm_project.model.Department;
 import com.ironhack.midterm_project.model.Employee;
@@ -56,9 +57,26 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
+    public void updateEmployeeDepartment(EmployeeDepartmentDTO employeeDepartmentDTO, Integer id) {
+        Employee employee = exceptionMsgEmployee(id);
+        Optional<Department> departmentOptional = departmentRepository.findById(employeeDepartmentDTO.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + employeeDepartmentDTO.getDepartment().getId() + " not found.");
+        }
+
+        employee.setDepartment(departmentOptional.get());
+        employeeRepository.save(employee);
+    }
+
+    @Override
     public void updateEmployeeInformation(EmployeeDTO employeeDTO, Integer id) {
         Employee employee = exceptionMsgEmployee(id);
         employee.setName(employeeDTO.getName());
+        Optional<Department> departmentOptional = departmentRepository.findById(employeeDTO.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + employeeDTO.getDepartment().getId() + " not found.");
+        }
+        employee.setDepartment(departmentOptional.get());
         employeeRepository.save(employee);
     }
 
@@ -66,6 +84,11 @@ public class EmployeeService implements IEmployeeService {
     public void updateEmployeeInformation(EmployeeDTO employeeDTO, String name) {
         Employee employee = exceptionMsgEmployee(name);
         employee.setName(employeeDTO.getName());
+        Optional<Department> departmentOptional = departmentRepository.findById(employeeDTO.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + employeeDTO.getDepartment().getId() + " not found.");
+        }
+        employee.setDepartment(departmentOptional.get());
         employeeRepository.save(employee);
     }
 
@@ -86,8 +109,6 @@ public class EmployeeService implements IEmployeeService {
                 departmentRepository.delete(department);
             }
         }
-
-
     }
 
     @Override
