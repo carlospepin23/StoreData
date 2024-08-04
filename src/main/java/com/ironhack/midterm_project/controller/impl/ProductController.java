@@ -1,10 +1,7 @@
 package com.ironhack.midterm_project.controller.impl;
 
+import com.ironhack.midterm_project.DTO.product_dto.*;
 import com.ironhack.midterm_project.controller.interfaces.IProductController;
-import com.ironhack.midterm_project.DTO.product_dto.ProductDTO;
-import com.ironhack.midterm_project.DTO.product_dto.ProductNameDTO;
-import com.ironhack.midterm_project.DTO.product_dto.ProductPriceDTO;
-import com.ironhack.midterm_project.DTO.product_dto.ProductStockDTO;
 import com.ironhack.midterm_project.model.Product;
 import com.ironhack.midterm_project.service.impl.ProductService;
 import jakarta.validation.Valid;
@@ -56,6 +53,12 @@ public class ProductController implements IProductController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateProductStock(@RequestBody @Valid ProductStockDTO productStockDTO, @PathVariable Integer id) {
         productService.updateProductStock(productStockDTO, id);
+    }
+
+    @PatchMapping("/products/{id}/department")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateProductDepartment(@RequestBody @Valid ProductDepartmentDTO productDepartmentDTO, @PathVariable Integer id) {
+        productService.updateProductDepartment(productDepartmentDTO,id);
     }
 
     //  ***************************************************  PUT  ****************************************************

@@ -1,10 +1,9 @@
 package com.ironhack.midterm_project.service.impl;
 
-import com.ironhack.midterm_project.DTO.product_dto.ProductDTO;
-import com.ironhack.midterm_project.DTO.product_dto.ProductNameDTO;
-import com.ironhack.midterm_project.DTO.product_dto.ProductPriceDTO;
-import com.ironhack.midterm_project.DTO.product_dto.ProductStockDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDepartmentDTO;
+import com.ironhack.midterm_project.DTO.product_dto.*;
 import com.ironhack.midterm_project.model.Department;
+import com.ironhack.midterm_project.model.Employee;
 import com.ironhack.midterm_project.model.Product;
 import com.ironhack.midterm_project.repository.DepartmentRepository;
 import com.ironhack.midterm_project.repository.ProductRepository;
@@ -71,11 +70,27 @@ public class ProductService implements IProductsService {
     }
 
     @Override
+    public void updateProductDepartment(ProductDepartmentDTO productDepartmentDTO, Integer id) {
+        Product product = exceptionMsgProduct(id);
+        Optional<Department> departmentOptional = departmentRepository.findById(productDepartmentDTO.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + productDepartmentDTO.getDepartment().getId() + " not found.");
+        }
+        product.setDepartment(departmentOptional.get());
+        productRepository.save(product);
+    }
+
+    @Override
     public void updateProductInformation(ProductDTO productDTO, Integer id) {
         Product product = exceptionMsgProduct(id);
         product.setName(productDTO.getName());
         product.setPrice(productDTO.getPrice());
         product.setStock(productDTO.getStock());
+        Optional<Department> departmentOptional = departmentRepository.findById(productDTO.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + productDTO.getDepartment().getId() + " not found.");
+        }
+        product.setDepartment(departmentOptional.get());
         productRepository.save(product);
     }
 
@@ -85,6 +100,11 @@ public class ProductService implements IProductsService {
         product.setName(productDTO.getName());
         product.setPrice(productDTO.getPrice());
         product.setStock(productDTO.getStock());
+        Optional<Department> departmentOptional = departmentRepository.findById(productDTO.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + productDTO.getDepartment().getId() + " not found.");
+        }
+        product.setDepartment(departmentOptional.get());
         productRepository.save(product);
     }
 
