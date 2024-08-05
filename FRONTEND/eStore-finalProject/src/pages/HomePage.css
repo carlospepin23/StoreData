@@ -1,0 +1,4 @@
+.homepage {
+    background-color: #333;
+    min-height: 100vh; /* Ensures the div takes up the full viewport height */
+  }

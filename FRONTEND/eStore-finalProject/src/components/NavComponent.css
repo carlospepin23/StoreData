@@ -1,0 +1,66 @@
+.nav-component_navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensure the divs are spaced out */
+  padding: 10px;
+  background-color: #81d4c7; /* Background color of the navbar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
+}
+
+.nav-component_left,
+.nav-component_center,
+.nav-component_right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-component_left {
+  flex: 1; /* Align to the left */
+}
+
+.nav-component_center {
+  flex: 1; /* Center align */
+  justify-content: center;
+}
+
+.nav-component_right {
+  flex: 1; /* Align to the right */
+  justify-content: flex-end;
+}
+
+.nav-component_icon {
+  width: 40px; /* Adjust the size of the icon */
+  height: 40px;
+  margin-right: 10px; /* Space between the icon and the title */
+}
+
+.nav-component_burger-icon {
+  height: 20px; /* Adjust the height to make the burger icon small */
+  margin-right: 10px; /* Space between the icon and the title */
+}
+
+.nav-component_title {
+  font-size: 1.5rem; 
+  font-weight: bold; 
+  font-family: 'Roboto', sans-serif; 
+}
+
+.nav-component_links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-component_links li {
+  margin: 0 15px;
+}
+
+.nav-component_links a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.nav-component_links a:hover {
+  text-decoration: underline;
+}
