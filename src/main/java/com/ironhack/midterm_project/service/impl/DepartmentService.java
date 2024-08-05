@@ -52,6 +52,10 @@ public class DepartmentService implements IDepartmentService {
     public void addNewDepartment(Department department) {
         alreadyExists(department);
         employeesAndInventoryAlreadyExist(department);
+        Optional<Store> storeOptional = storeRepository.findById(department.getStore().getId());
+        if (storeOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Store with id " + department.getStore().getId() + " not found.");
+        }
         department.departmentSetter();
         departmentRepository.save(department);
 

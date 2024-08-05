@@ -1,6 +1,7 @@
 package com.ironhack.midterm_project.controller.impl;
 
 import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDTO;
+import com.ironhack.midterm_project.DTO.employee_dto.EmployeeDepartmentDTO;
 import com.ironhack.midterm_project.DTO.employee_dto.EmployeeNameDTO;
 import com.ironhack.midterm_project.controller.interfaces.IEmployeeController;
 import com.ironhack.midterm_project.model.Employee;
@@ -42,6 +43,12 @@ public class EmployeeController implements IEmployeeController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateEmployeeName(@RequestBody @Valid EmployeeNameDTO employeeNameDTO, @PathVariable Integer id) {
         employeeService.updateEmployeeName(employeeNameDTO, id);
+    }
+
+    @PatchMapping("/employees/{id}/department")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateEmployeeDepartment(@RequestBody @Valid EmployeeDepartmentDTO employeeDepartmentDTO, @PathVariable Integer id) {
+        employeeService.updateEmployeeDepartment(employeeDepartmentDTO, id);
     }
 
     //  ***************************************************  PUT  ****************************************************

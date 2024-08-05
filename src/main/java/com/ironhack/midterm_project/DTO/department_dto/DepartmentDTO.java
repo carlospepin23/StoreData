@@ -15,6 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class DepartmentDTO {
+    //anadir verificacion para que no se repitan ids, y sean ids validos
+    private Integer id;
     @NotBlank(message = "Name cannot be blank")
     private String name;
     @NotEmpty(message = "The department must have at least one employee")

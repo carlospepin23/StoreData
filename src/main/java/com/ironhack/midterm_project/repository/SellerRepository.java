@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface SellerRepository extends JpaRepository<Seller, Integer> {
+    Optional<Seller> findByEmail(String email);
     Optional<Seller> findByName(String name);
     void deleteAllByIdNot(Integer id);
 }

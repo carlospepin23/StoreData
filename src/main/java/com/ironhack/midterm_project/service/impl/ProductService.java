@@ -1,9 +1,6 @@
 package com.ironhack.midterm_project.service.impl;
 
-import com.ironhack.midterm_project.DTO.product_dto.ProductDTO;
-import com.ironhack.midterm_project.DTO.product_dto.ProductNameDTO;
-import com.ironhack.midterm_project.DTO.product_dto.ProductPriceDTO;
-import com.ironhack.midterm_project.DTO.product_dto.ProductStockDTO;
+import com.ironhack.midterm_project.DTO.product_dto.*;
 import com.ironhack.midterm_project.model.Department;
 import com.ironhack.midterm_project.model.Product;
 import com.ironhack.midterm_project.repository.DepartmentRepository;
@@ -41,6 +38,11 @@ public class ProductService implements IProductsService {
     @Override
     public void addNewProduct(Product product) {
         alreadyExists(product);
+        Optional<Department> departmentOptional = departmentRepository.findById(product.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + product.getDepartment().getId() + " not found.");
+        }
+
         productRepository.save(product);
     }
 
@@ -66,13 +68,64 @@ public class ProductService implements IProductsService {
     }
 
     @Override
+    public void updateProductDepartment(ProductDepartmentDTO productDepartmentDTO, Integer id) {
+        Product product = exceptionMsgProduct(id);
+        Department currentDepartment = product.getDepartment();
+
+        // Check if the current department will be left without products
+        if (currentDepartment.getInventory().size() == 1) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The current department cannot be left without products");
+        }
+
+        // Fetch the new department entity using the ID from ProductDepartmentDTO
+        Optional<Department> departmentOptional = departmentRepository.findById(productDepartmentDTO.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + productDepartmentDTO.getDepartment().getId() + " not found.");
+        }
+
+        // Update the product's department
+        product.setDepartment(departmentOptional.get());
+        productRepository.save(product);
+    }
+
+    @Override
     public void updateProductInformation(ProductDTO productDTO, Integer id) {
         Product product = exceptionMsgProduct(id);
         product.setName(productDTO.getName());
         product.setPrice(productDTO.getPrice());
         product.setStock(productDTO.getStock());
+
+        Department currentDepartment = product.getDepartment();
+
+        // Check if the current department will be left without products
+        if (currentDepartment.getInventory().size() == 1) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The current department cannot be left without products");
+        }
+
+        // Fetch the new department entity using the ID from ProductDTO
+        Optional<Department> departmentOptional = departmentRepository.findById(productDTO.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + productDTO.getDepartment().getId() + " not found.");
+        }
+
+        // Update the product's department
+        product.setDepartment(departmentOptional.get());
         productRepository.save(product);
     }
+
+//    @Override
+//    public void updateProductInformation(ProductDTO productDTO, String name) {
+//        Product product = exceptionMsgProduct(name);
+//        product.setName(productDTO.getName());
+//        product.setPrice(productDTO.getPrice());
+//        product.setStock(productDTO.getStock());
+//        Optional<Department> departmentOptional = departmentRepository.findById(productDTO.getDepartment().getId());
+//        if (departmentOptional.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + productDTO.getDepartment().getId() + " not found.");
+//        }
+//        product.setDepartment(departmentOptional.get());
+//        productRepository.save(product);
+//    }
 
     @Override
     public void updateProductInformation(ProductDTO productDTO, String name) {
@@ -80,6 +133,22 @@ public class ProductService implements IProductsService {
         product.setName(productDTO.getName());
         product.setPrice(productDTO.getPrice());
         product.setStock(productDTO.getStock());
+
+        Department currentDepartment = product.getDepartment();
+
+        // Check if the current department will be left without products
+        if (currentDepartment.getInventory().size() == 1) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The current department cannot be left without products");
+        }
+
+        // Fetch the new department entity using the ID from ProductDTO
+        Optional<Department> departmentOptional = departmentRepository.findById(productDTO.getDepartment().getId());
+        if (departmentOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Department with id " + productDTO.getDepartment().getId() + " not found.");
+        }
+
+        // Update the product's department
+        product.setDepartment(departmentOptional.get());
         productRepository.save(product);
     }
 
