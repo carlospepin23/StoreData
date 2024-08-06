@@ -1,10 +1,11 @@
 .nav-component_navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Ensure the divs are spaced out */
+  justify-content: space-between;
   padding: 10px;
-  background-color: #81d4c7; /* Background color of the navbar */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
+  background-color: white; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; 
 }
 
 .nav-component_left,
@@ -29,20 +30,10 @@
 }
 
 .nav-component_icon {
-  width: 40px; /* Adjust the size of the icon */
-  height: 40px;
+  width: 250px; /* Adjust the size of the icon */
+  height: 80px;
   margin-right: 10px; /* Space between the icon and the title */
-}
-
-.nav-component_burger-icon {
-  height: 20px; /* Adjust the height to make the burger icon small */
-  margin-right: 10px; /* Space between the icon and the title */
-}
-
-.nav-component_title {
-  font-size: 1.5rem; 
-  font-weight: bold; 
-  font-family: 'Roboto', sans-serif; 
+  border-radius: 10px; /* Rounded edges for the icon */
 }
 
 .nav-component_links {
@@ -57,8 +48,11 @@
 }
 
 .nav-component_links a {
-  color: rgb(0, 0, 0);
+  color: #63b289;
   text-decoration: none;
+  font-size: 18px;
+  border-radius: 5px; /* Rounded edges for the links */
+  padding: 5px 10px; /* Add some padding for better appearance */
 }
 
 .nav-component_links a:hover {
