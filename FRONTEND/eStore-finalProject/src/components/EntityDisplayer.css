@@ -1,0 +1,16 @@
+.entity-displayer {
+    padding: 20px;
+  }
+  
+  .header {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .entity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  

@@ -8,3 +8,38 @@
     position: relative; /* Ensure it can be layered */
     z-index: 1; /* Lower z-index to be below the navbar */
 }
+
+.store-detail {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .content {
+    display: flex;
+    flex: 1;
+  }
+  
+  .leftside-menu {
+    width: 200px; /* Adjust the width as needed */
+    /* Add your leftside menu styles here */
+    border: 1px solid black; /* Add a black border */
+  }
+  
+  .rightside-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 135px;
+    border: 1px solid black; /* Add a black border */
+  }
+  
+  .search-bar {
+    /* Add your search bar styles here */
+    margin-bottom: 20px; /* Adjust the margin as needed */
+  }
+  
+  .display-entity {
+    /* Add your display entity styles here */
+    flex: 1;
+  }

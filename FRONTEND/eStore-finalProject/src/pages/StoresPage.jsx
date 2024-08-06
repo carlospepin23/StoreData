@@ -37,7 +37,7 @@ function StoresPage() {
         <h1>Stores</h1>
         <p>List of stores on the platform</p>
       </div>
-      <div className="action-buttons">
+      <div className="action-buttons">{/* Make it a component */}
         <Link to="/stores/add">
             <button className="add-button">+</button>
         </Link> 
