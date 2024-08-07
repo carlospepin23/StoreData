@@ -12,10 +12,14 @@ function StoreDetailPage() {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const getStore = async () => {
-    const response = await fetch(`http://localhost:8080/api/stores/${id}`); 
-    const data = await response.json();
-    console.log(data);
-    setStore(data);
+    try {
+      const response = await fetch(`http://localhost:8080/api/stores/${id}`); 
+      const data = await response.json();
+      console.log(data);
+      setStore(data);
+    } catch (error) {
+      console.log("Error fetching store", error);
+    }
   };
 
   const getDepartments = (store) => {
@@ -41,7 +45,10 @@ function StoreDetailPage() {
       </div>
       <div className="content">
         <div className="leftside-menu">
-          <MenuComponent departments={departments} onOptionSelect={handleOptionSelect} />
+          <MenuComponent 
+          departments={departments}
+          onOptionSelect={handleOptionSelect}
+          storeName={store.name} />
         </div>
         <div className="rightside-content">
           <div className="search-bar">SEARCH BAR</div>
@@ -50,6 +57,7 @@ function StoreDetailPage() {
               <EntityDisplayer 
                 name={selectedOption} 
                 entities={selectedDepartment[selectedOption.toLowerCase()]} 
+                onEntityDeleted={getStore} // Pass the getStore function
               />
             )}
           </div>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import DepartmentComponent from "./DepartmentComponent";
 
-function MenuComponent({ departments, onOptionSelect }) {
+function MenuComponent({ departments, onOptionSelect,storeName }) {
   return (
     <div>
-      <h1>Menu Title</h1>
+      <h1>{storeName}</h1>
       <div>
         {departments && departments.length > 0 ? (
           departments.map((dept, index) => (

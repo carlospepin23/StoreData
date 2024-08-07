@@ -4,6 +4,9 @@
   
 }
 
+.header{
+  border: 1px solid black;
+}
 
 
 .stores-list-container {
@@ -19,6 +22,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
+  border: 1px solid black;
 }
 
 .stores-list.no-dots {
@@ -32,6 +36,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: transform 0.2s;
+  
 }
 
 .stores-list .store-card:hover {
@@ -40,35 +45,41 @@
 
 .stores-list .title h2 {
   margin: 0;
+  
 }
 
 .stores-list .store-information p {
   margin: 5px 0;
+  
 }
 
 .action-buttons {
   display: flex;
   justify-content: flex-end; /* Align buttons to the right */
   margin-bottom: 20px;
+  border: 1px solid black
 }
 
-.add-button {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #28a745; /* Green background */
-  color: white;
-  font-size: 24px;
-  border: none;
-  cursor: pointer;
-  margin-right: 10px;
+/* Add these styles to StoresPage.css */
+
+.add-button, .filter-button {
+  width: 50px; /* Set a fixed width */
+  height: 50px; /* Set a fixed height */
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none; /* Remove default border */
+  background-color: #f0f0f0; /* Set a background color */
+  cursor: pointer; /* Change cursor to pointer */
 }
 
-.add-button:hover {
-  background-color: #218838; /* Darker green on hover */
+.add-button img {
+  width: 30px; /* Set a fixed width for the image */
+  height: 30px; /* Set a fixed height for the image */
+}
+
+.filter-button {
+  /* Additional styles for filter button if needed */
 }
 
 .filter-button {
@@ -79,8 +90,4 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
-}
-
-.filter-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
 }

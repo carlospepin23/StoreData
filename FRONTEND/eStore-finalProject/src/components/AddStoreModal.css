@@ -1,0 +1,98 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure the modal is on top */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 100%;
+  max-height: 80vh; /* Set a maximum height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+  animation: fadeIn 0.3s ease-in-out; /* Add fade-in animation */
+  position: relative; /* For positioning the close button */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  text-align: center; /* Center the heading */
+}
+
+.modal-content form div {
+  margin-bottom: 15px; /* Increase spacing */
+}
+
+.modal-content form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Make labels bold */
+}
+
+.modal-content form input,
+.modal-content form textarea {
+  width: 100%;
+  padding: 10px; /* Increase padding */
+  box-sizing: border-box;
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 4px; /* Add border radius */
+  font-size: 14px; /* Increase font size */
+}
+
+.modal-content form button {
+  padding: 10px 15px; /* Increase padding */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px; /* Add margin between buttons */
+}
+
+.modal-content form button[type="submit"] {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+}
+
+.modal-content form button[type="button"] {
+  background-color: #f44336; /* Red background */
+  color: white; /* White text */
+}
+
+.modal-content form button:hover {
+  opacity: 0.9; /* Slightly dim on hover */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #f44336; /* Red color on hover */
+}
