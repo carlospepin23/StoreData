@@ -1,0 +1,20 @@
+.store-card {
+    background-color: white;
+    border-radius: 15px; /* Adjust the value for more or less circular edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visual effect */
+    padding: 20px;
+    margin: 10px;
+    transition: transform 0.2s; /* Optional: Add a transition effect on hover */
+  }
+  
+  .store-card:hover {
+    transform: scale(1.05); /* Optional: Slightly enlarge the card on hover */
+  }
+  
+  .title h2 {
+    margin: 0;
+  }
+  
+  .store-information p {
+    margin: 5px 0;
+  }

@@ -1,0 +1,19 @@
+.entity-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .entity-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .entity-card h2 {
+    margin-top: 0;
+  }
+  
+  .entity-card p {
+    margin-bottom: 0;
+  }

@@ -1,0 +1,60 @@
+.nav-component_navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; 
+}
+
+.nav-component_left,
+.nav-component_center,
+.nav-component_right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-component_left {
+  flex: 1; /* Align to the left */
+}
+
+.nav-component_center {
+  flex: 1; /* Center align */
+  justify-content: center;
+}
+
+.nav-component_right {
+  flex: 1; /* Align to the right */
+  justify-content: flex-end;
+}
+
+.nav-component_icon {
+  width: 250px; /* Adjust the size of the icon */
+  height: 80px;
+  margin-right: 10px; /* Space between the icon and the title */
+  border-radius: 10px; /* Rounded edges for the icon */
+}
+
+.nav-component_links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-component_links li {
+  margin: 0 15px;
+}
+
+.nav-component_links a {
+  color: #63b289;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 5px; /* Rounded edges for the links */
+  padding: 5px 10px; /* Add some padding for better appearance */
+}
+
+.nav-component_links a:hover {
+  text-decoration: underline;
+}
