@@ -56,30 +56,40 @@
   padding: 10px; /* Increase padding */
   box-sizing: border-box;
   border: 1px solid #ccc; /* Add border */
-  border-radius: 4px; /* Add border radius */
+  border-radius:30px; /* Add border radius */
   font-size: 14px; /* Increase font size */
 }
 
-.modal-content form button {
+.modal-content form .button-container {
+  display: flex;
+  justify-content: flex-end;
+  /* VERIFIES WHATS WRONG WITH GAP */
+}
+
+
+.modal-content form .add-store-button {
   padding: 10px 15px; /* Increase padding */
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  margin-right: 10px; /* Add margin between buttons */
-}
-
-.modal-content form button[type="submit"] {
   background-color: #4CAF50; /* Green background */
   color: white; /* White text */
 }
 
-.modal-content form button[type="button"] {
+.modal-content form .cancel-button {
+  padding: 10px 15px; /* Increase padding */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
   background-color: #f44336; /* Red background */
   color: white; /* White text */
+  
 }
 
-.modal-content form button:hover {
+.modal-content form .add-store-button:hover,
+.modal-content form .cancel-button:hover {
   opacity: 0.9; /* Slightly dim on hover */
 }
 
@@ -91,8 +101,4 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
-}
-
-.close-button:hover {
-  color: #f44336; /* Red color on hover */
 }

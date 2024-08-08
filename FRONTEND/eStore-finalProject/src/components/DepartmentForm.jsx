@@ -1,9 +1,12 @@
 import EmployeeForm from './EmployeeForm';
 import ProductForm from './ProductForm';
+import './DepartmentForm.css';
+import createIcon from '../assets/media/add.png';
+import trashIcon from '../assets/media/minus-circle.png';
 
-function DepartmentForm({ deptIndex, department, handleDepartmentChange, handleEmployeeChange, handleProductChange, addEmployee, removeEmployee, addProduct, removeProduct }) {
+function DepartmentForm({ deptIndex, department, handleDepartmentChange, handleEmployeeChange, handleProductChange, addEmployee, removeEmployee, addProduct, removeProduct, addDepartment, removeDepartment }) {
   return (
-    <div>
+    <div className="department-container">
       <h3>Department {deptIndex + 1}</h3>
       <div>
         <label>Department Name:</label>
@@ -25,6 +28,7 @@ function DepartmentForm({ deptIndex, department, handleDepartmentChange, handleE
           handleEmployeeChange={handleEmployeeChange}
           addEmployee={addEmployee}
           removeEmployee={removeEmployee}
+          isLastEmployee={empIndex === department.employees.length - 1}
         />
       ))}
       {department.inventory.map((product, prodIndex) => (
@@ -36,8 +40,19 @@ function DepartmentForm({ deptIndex, department, handleDepartmentChange, handleE
           handleProductChange={handleProductChange}
           addProduct={addProduct}
           removeProduct={removeProduct}
+          isLastProduct={prodIndex === department.inventory.length - 1}
         />
       ))}
+      <div className="department-buttons">
+        {deptIndex > 0 && (
+          <button type="button" onClick={() => removeDepartment(deptIndex)}>
+            <img src={trashIcon} alt="Remove Department" />
+          </button>
+        )}
+        <button type="button" onClick={addDepartment}>
+          <img src={createIcon} alt="Add Department" />
+        </button>
+      </div>
     </div>
   );
 }

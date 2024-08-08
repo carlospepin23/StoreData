@@ -60,7 +60,8 @@ import NavComponent from '../components/NavComponent';
 import StoreCard from '../components/StoreCard';
 import './StoresPage.css';
 import { Link } from 'react-router-dom';
-import addIcon from '../assets/media/add.png';
+import addIcon from '../assets/media/plus.svg';
+import filterIcon from '../assets/media/filter.svg';
 import AddStoreModal from '../components/AddStoreModal'; // Import the modal component
 
 function StoresPage() {
@@ -105,7 +106,9 @@ function StoresPage() {
         <button className="add-button" onClick={() => setIsModalOpen(true)}>
           <img src={addIcon} alt="Add Button" />
         </button>
-        <button className="filter-button">Filter</button>
+        <button className="filter-button">
+          <img src={filterIcon} alt="Filter Button" />
+        </button>
       </div>
       <div className="stores-list-container">
         <ul className="stores-list no-dots">{storeList}</ul>

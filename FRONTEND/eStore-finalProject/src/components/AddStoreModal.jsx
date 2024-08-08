@@ -109,7 +109,7 @@ function AddStoreModal({ isOpen, onClose, onAddStore }) {
             />
           </div>
           {departments.map((department, deptIndex) => (
-            <div key={deptIndex}>
+            <div key={deptIndex} className="department-container">
               <DepartmentForm
                 deptIndex={deptIndex}
                 department={department}
@@ -120,15 +120,13 @@ function AddStoreModal({ isOpen, onClose, onAddStore }) {
                 removeEmployee={removeEmployee}
                 addProduct={addProduct}
                 removeProduct={removeProduct}
+                addDepartment={addDepartment}
+                removeDepartment={removeDepartment}
               />
-              {deptIndex > 0 && (
-                <button type="button" onClick={() => removeDepartment(deptIndex)}>Remove Department</button>
-              )}
             </div>
           ))}
-          <button type="button" onClick={addDepartment}>Add Department</button>
-          <button type="submit">Add Store</button>
-          <button type="button" onClick={onClose}>Cancel</button>
+          <button type="submit" className="add-store-button">Add Store</button>
+          <button type="button" className="cancel-button" onClick={onClose}>Cancel</button>
         </form>
       </div>
     </div>

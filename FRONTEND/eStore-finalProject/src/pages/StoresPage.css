@@ -73,21 +73,7 @@
   cursor: pointer; /* Change cursor to pointer */
 }
 
-.add-button img {
+.add-button img, .filter-button img {
   width: 30px; /* Set a fixed width for the image */
   height: 30px; /* Set a fixed height for the image */
-}
-
-.filter-button {
-  /* Additional styles for filter button if needed */
-}
-
-.filter-button {
-  padding: 10px 20px;
-  background-color: #007bff; /* Blue background */
-  color: white;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
 }

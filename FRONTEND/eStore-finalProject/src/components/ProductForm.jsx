@@ -1,6 +1,10 @@
-function ProductForm({ deptIndex, prodIndex, product, handleProductChange, addProduct, removeProduct }) {
+import './ProductForm.css'; // Import the CSS file for styling
+import createIcon from '../assets/media/add.png';
+import trashIcon from '../assets/media/minus-circle.png';
+
+function ProductForm({ deptIndex, prodIndex, product, handleProductChange, addProduct, removeProduct, isLastProduct }) {
   return (
-    <div>
+    <div className="product-form">
       <h4>Product {prodIndex + 1}</h4>
       <div>
         <label>Product Name:</label>
@@ -35,10 +39,18 @@ function ProductForm({ deptIndex, prodIndex, product, handleProductChange, addPr
           required
         />
       </div>
-      <button type="button" onClick={() => addProduct(deptIndex)}>Add Product</button>
-      {prodIndex > 0 && (
-        <button type="button" onClick={() => removeProduct(deptIndex, prodIndex)}>Remove Product</button>
-      )}
+      <div className="button-container">
+        {prodIndex > 0 && (
+          <button type="button" className="remove-product-button" onClick={() => removeProduct(deptIndex, prodIndex)}>
+            <img src={trashIcon} alt="Remove Product" />
+          </button>
+        )}
+        {isLastProduct && (
+          <button type="button" className="add-product-button" onClick={() => addProduct(deptIndex)}>
+            <img src={createIcon} alt="Add Product" />
+          </button>
+        )}
+      </div>
     </div>
   );
 }

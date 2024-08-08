@@ -1,0 +1,54 @@
+.department-container {
+    position: relative;
+    padding-right: 30px;
+    border: 1px solid black;
+    /* CHECK BORDER!! */
+}
+
+.department-buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    /* gap: 10px;  */
+    opacity: 0; /* Initially hide the buttons */
+    transition: opacity 0.3s; /* Add transition effect */
+    /* padding-right: 50px; */
+    /* modify later */
+}
+
+.department-container:hover .department-buttons {
+    opacity: 1; /* Show buttons on hover */
+}
+
+.department-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.department-buttons img {
+    width: 45px;
+    height: 45px;
+    background-color: #78c093; /* Set background color to light blue */
+    border-radius: 50%; /* Make the corners circular */
+}
+
+/* .department-employee-container,
+.department-product-container {
+    position: relative;
+    padding-right: 50px; 
+}
+
+.department-employee-buttons,
+.department-product-buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+}
+
+.department-employee-container:hover .department-employee-buttons,
+.department-product-container:hover .department-product-buttons {
+    display: block;
+} */
