@@ -1,4 +1,4 @@
-import React from 'react';
+
 import './StoreCard.css'; // Import the CSS file
 
 function StoreCard(props) {

@@ -1,10 +1,10 @@
-import EmployeeForm from './EmployeeForm';
+import StoreEmployeeForm from './StoreEmployeeForm';
 import ProductForm from './ProductForm';
 import './DepartmentForm.css';
 import createIcon from '../assets/media/add.png';
 import trashIcon from '../assets/media/minus-circle.png';
 
-function DepartmentForm({ deptIndex, department, handleDepartmentChange, handleEmployeeChange, handleProductChange, addEmployee, removeEmployee, addProduct, removeProduct, addDepartment, removeDepartment }) {
+function DepartmentForm({ deptIndex, department, allDepartments, handleDepartmentChange, handleEmployeeChange, handleProductChange, addEmployee, removeEmployee, addProduct, removeProduct, addDepartment, removeDepartment }) {
   return (
     <div className="department-container">
       <h3>Department {deptIndex + 1}</h3>
@@ -20,16 +20,17 @@ function DepartmentForm({ deptIndex, department, handleDepartmentChange, handleE
         />
       </div>
       {department.employees.map((employee, empIndex) => (
-        <EmployeeForm
-          key={empIndex}
-          deptIndex={deptIndex}
-          empIndex={empIndex}
-          employee={employee}
-          handleEmployeeChange={handleEmployeeChange}
-          addEmployee={addEmployee}
-          removeEmployee={removeEmployee}
-          isLastEmployee={empIndex === department.employees.length - 1}
-        />
+        <StoreEmployeeForm
+        key={empIndex}
+        deptIndex={deptIndex}
+        empIndex={empIndex}
+        employee={employee}
+        handleEmployeeChange={handleEmployeeChange}
+        addEmployee={addEmployee}
+        removeEmployee={removeEmployee}
+        isLastEmployee={empIndex === department.employees.length - 1}
+        allDepartments={allDepartments}
+      />
       ))}
       {department.inventory.map((product, prodIndex) => (
         <ProductForm

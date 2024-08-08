@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AddStoreModal.css'; // Create and import CSS for the modal
 import DepartmentForm from './DepartmentForm'; // Import the new component
 
-function AddStoreModal({ isOpen, onClose, onAddStore }) {
+function AddStoreModal({ isOpen, onClose, onAddStore, getStores }) {
   const [storeName, setStoreName] = useState('');
   const [storeLocation, setStoreLocation] = useState('');
   const [departments, setDepartments] = useState([
@@ -72,14 +72,38 @@ function AddStoreModal({ isOpen, onClose, onAddStore }) {
     setDepartments(newDepartments);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onAddStore({
+    const newStore = {
       name: storeName,
       location: storeLocation,
       departments
-    });
-    onClose();
+    };
+    console.log('Submitting new store:', newStore);
+  
+    try {
+      const response = await fetch('http://localhost:8080/api/stores', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newStore)
+      });
+  
+      if (response.ok) {
+        const text = await response.text();
+        const createdStore = text ? JSON.parse(text) : {};
+        
+        onAddStore(createdStore);
+        getStores(); // Call getStores after adding the new store
+        onClose();
+      } else {
+        const errorText = await response.text();
+        console.error('Failed to add store:', response.status, errorText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   if (!isOpen) return null;

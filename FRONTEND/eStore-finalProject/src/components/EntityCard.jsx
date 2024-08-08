@@ -1,8 +1,14 @@
+import React, { useState } from 'react';
 import './EntityCard.css';
 import trashIcon from "../assets/media/trash.svg";
 import editIcon from "../assets/media/edit.svg";
+import EditEmployeeModal from './EditEmployeeModal'; // Import the new component
 
-function EntityCard({ entity, onDelete }) {
+function EntityCard({ entity, onDelete, onUpdateEmployee, allDepartments}) {
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  // Log the allDepartments prop to check if it's being received correctly
+  console.log('allDepartments:', allDepartments);
 
   const deleteEntity = async () => {
     try {
@@ -24,7 +30,7 @@ function EntityCard({ entity, onDelete }) {
   };
 
   const editEntity = () => {
-    console.log("Edit entity functionality to be implemented");
+    setIsEditModalOpen(true);
   };
 
   return (
@@ -49,6 +55,14 @@ function EntityCard({ entity, onDelete }) {
           <img src={editIcon} alt="Edit Button" />
         </button>
       </div>
+      <EditEmployeeModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        employee={entity}
+        onUpdateEmployee={onUpdateEmployee} // Pass the onUpdateEmployee function
+        allDepartments={allDepartments} // Pass the allDepartments prop
+        // getAllDepartments={getAllDepartments} // Pass getAllDepartments here
+      />
     </div>
   );
 }
