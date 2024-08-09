@@ -58,17 +58,17 @@ function StoreCard(props) {
             <p>Departments: {getDepartmentsQuantity()}</p> 
           </Link>
         </div>
-      </div>
-      <div className="store-card-footer">
-        <button onClick={deleteStore}>
-          <img src={trashIcon} alt="Trash Button" />
-        </button>
-        <button onClick={editStoreName}>
-          <img src={editNameIcon} alt="Edit Name Button" />
-        </button>
-        <button onClick={editStoreLocation}>
-          <img src={editLocationIcon} alt="Edit Location Button" />
-        </button>
+        <div className="store-card-footer">
+          <button onClick={deleteStore}>
+            <img src={trashIcon} alt="Trash Button" />
+          </button>
+          <button onClick={editStoreName}>
+            <img src={editNameIcon} alt="Edit Name Button" />
+          </button>
+          <button onClick={editStoreLocation}>
+            <img src={editLocationIcon} alt="Edit Location Button" />
+          </button>
+        </div>
       </div>
       <EditStoreNameModal
         isOpen={isEditNameModalOpen}
