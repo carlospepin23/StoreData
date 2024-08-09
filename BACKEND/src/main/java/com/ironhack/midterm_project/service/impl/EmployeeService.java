@@ -170,17 +170,60 @@ public class EmployeeService implements IEmployeeService {
                     "Cannot delete the only employee in the database.");
         }
 
-        exceptionMsgEmployee(id);
-        employeeRepository.deleteById(id);
 
-        departmentRepository.flush();
-        List<Department> departments = departmentRepository.findAll();
-        for (Department department : departments) {
-            if (department.getEmployees().isEmpty()) {
-                departmentRepository.delete(department);
+        Optional<Employee> employeeOptional = employeeRepository.findById(id);
+        if (employeeOptional.isPresent()){
+            Department department = employeeOptional.get().getDepartment();
+            if (department.getEmployees().size() <= 1) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                        "Cannot delete the only employee in the department.");
             }
         }
+
+        exceptionMsgEmployee(id);
+        employeeRepository.deleteById(id); //dont understand why it doesnt delete the employee
+
+//        departmentRepository.flush();
+//        List<Department> departments = departmentRepository.findAll();
+//        for (Department department : departments) {
+//            if (department.getEmployees().isEmpty()) {
+//                departmentRepository.delete(department);
+//            }
+//        }
     }
+
+//    @Override
+//    public void deleteEmployee(Integer id) {
+//        Employee employee = exceptionMsgEmployee(id);
+//        Department department = employee.getDepartment();
+//
+//        // Check if the department will be left without employees
+//
+//        if (department.getEmployees().size() <= 1) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+//                    "Cannot delete the only employee in the department.");
+//        }
+//
+//        // Check if the database will be left without employees
+//        if (employeeRepository.findAll().size() == 1) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+//                    "Cannot delete the only employee in the database.");
+//        }
+//
+//        // Delete the employee
+//        exceptionMsgEmployee(id);
+//        employeeRepository.deleteById(id);
+//
+////        // Refresh the department entity to ensure the employee list is updated
+////        department = departmentRepository.findById(department.getId()).orElseThrow(() ->
+////                new ResponseStatusException(HttpStatus.NOT_FOUND, "Department not found"));
+////
+////        // Check again if the department is empty and delete it if necessary
+////        if (department.getEmployees().isEmpty()) {
+////            departmentRepository.delete(department);
+////        }
+//    }
+
 
     @Override
     public void deleteAllEmployeesExceptId(Integer id) {

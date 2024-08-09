@@ -39,6 +39,12 @@ public class StoreService implements IStoreService {
     }
 
     @Override
+    public Store getStoreByName(String name) {
+        return exceptionMsgStore(name);
+
+    }
+
+    @Override
     public void addNewStore(Store store) {
         // ensure the store doesn't already exist
         Optional<Store> storeOptional = storeRepository.findByName(store.getName());
@@ -119,6 +125,18 @@ public class StoreService implements IStoreService {
         Optional<Store> storeOptional = storeRepository.findById(id);
         if (storeOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
                 "Store with id " + id + " not found.");
+
+        return storeOptional.get();
+    }
+
+    private Store exceptionMsgStore(String name){
+        List<Store> stores = storeRepository.findAll();
+        if (stores.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "No stores found.");
+
+        Optional<Store> storeOptional = storeRepository.findByName(name);
+        if (storeOptional.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,
+                "Store with name " + name + " not found.");
 
         return storeOptional.get();
     }

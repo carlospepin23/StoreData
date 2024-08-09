@@ -35,6 +35,11 @@ public class StoreController implements IStoreController {
         return storeService.getStoreById(id);
     }
 
+    @GetMapping("/stores/name/{name}")
+    public Store getStoreByName(@PathVariable String name) {
+        return storeService.getStoreByName(name);
+    }
+
     //  ***************************************************  POST  ****************************************************
     @PostMapping("/stores")
     @ResponseStatus(HttpStatus.CREATED)
