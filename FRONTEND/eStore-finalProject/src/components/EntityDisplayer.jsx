@@ -2,7 +2,7 @@ import EntityCard from './EntityCard'; // Adjust the import path as needed
 import './EntityDisplayer.css';
 import { useState, useEffect } from 'react';
 
-function EntityDisplayer({ name, entities, onEntityDeleted, onUpdateEmployee, allDepartments}) {
+function EntityDisplayer({ name, entities, onEntityDeleted, onUpdateEmployee, onUpdateProduct, allDepartments }) {
   const [entityList, setEntityList] = useState(entities);
 
   useEffect(() => {
@@ -26,9 +26,9 @@ function EntityDisplayer({ name, entities, onEntityDeleted, onUpdateEmployee, al
             key={entity.id} 
             entity={entity} 
             onDelete={handleDelete} 
-            onUpdateEmployee={onUpdateEmployee} 
+            onUpdateEmployee={onUpdateEmployee}
+            onUpdateProduct={onUpdateProduct}
             allDepartments={allDepartments} // Pass the allDepartments prop
-            // getAllDepartments={getAllDepartments} // Pass getAllDepartments here
           />
         ))}
       </div>

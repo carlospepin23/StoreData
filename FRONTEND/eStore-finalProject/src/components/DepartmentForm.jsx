@@ -1,12 +1,12 @@
 import StoreEmployeeForm from './StoreEmployeeForm';
-import ProductForm from './ProductForm';
+import StoreProductForm from './StoreProductForm';
 import './DepartmentForm.css';
 import createIcon from '../assets/media/add.png';
 import trashIcon from '../assets/media/minus-circle.png';
 
 function DepartmentForm({ deptIndex, department, allDepartments, handleDepartmentChange, handleEmployeeChange, handleProductChange, addEmployee, removeEmployee, addProduct, removeProduct, addDepartment, removeDepartment }) {
   return (
-    <div className="department-container">
+    <div >
       <h3>Department {deptIndex + 1}</h3>
       <div>
         <label>Department Name:</label>
@@ -33,7 +33,7 @@ function DepartmentForm({ deptIndex, department, allDepartments, handleDepartmen
       />
       ))}
       {department.inventory.map((product, prodIndex) => (
-        <ProductForm
+        <StoreProductForm
           key={prodIndex}
           deptIndex={deptIndex}
           prodIndex={prodIndex}
@@ -42,6 +42,7 @@ function DepartmentForm({ deptIndex, department, allDepartments, handleDepartmen
           addProduct={addProduct}
           removeProduct={removeProduct}
           isLastProduct={prodIndex === department.inventory.length - 1}
+          allDepartments={allDepartments}
         />
       ))}
       <div className="department-buttons">

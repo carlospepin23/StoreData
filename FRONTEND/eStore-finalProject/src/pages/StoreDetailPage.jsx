@@ -74,6 +74,28 @@ function StoreDetailPage() {
     }
   };
 
+  const handleUpdateProduct = async (updatedProduct) => {
+    try {
+      await fetch(`http://localhost:8080/api/products/${updatedProduct.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedProduct),
+      });
+  
+      await getStore();
+  
+      // Ensure the selected department and option are correctly updated
+      const updatedDepartment = store.departments.find(dept => dept.id === updatedProduct.department.id);
+      setSelectedDepartment(updatedDepartment);
+      setSelectedOption(updatedProduct.department.name);
+  
+    } catch (error) {
+      console.log("Error updating product", error);
+    }
+  };
+
   const handleEntityDeleted = async () => {
     try {
       await getStore();
@@ -108,6 +130,7 @@ function StoreDetailPage() {
                 entities={selectedDepartment[selectedOption.toLowerCase()]} 
                 onEntityDeleted={handleEntityDeleted} 
                 onUpdateEmployee={handleUpdateEmployee} 
+                onUpdateProduct={handleUpdateProduct} 
                 allDepartments={allDepartments} 
               />
             )}

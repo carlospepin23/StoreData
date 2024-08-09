@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import './EntityCard.css';
 import trashIcon from "../assets/media/trash.svg";
 import editIcon from "../assets/media/edit.svg";
-import EditEmployeeModal from './EditEmployeeModal'; // Import the new component
+import EditEmployeeModal from './EditEmployeeModal'; // Import the EditEmployeeModal component
+import EditProductModal from './EditProductModal'; // Import the EditProductModal component
 
-function EntityCard({ entity, onDelete, onUpdateEmployee, allDepartments}) {
+function EntityCard({ entity, onDelete, onUpdateEmployee, onUpdateProduct, allDepartments }) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   // Log the allDepartments prop to check if it's being received correctly
@@ -13,8 +14,8 @@ function EntityCard({ entity, onDelete, onUpdateEmployee, allDepartments}) {
   const deleteEntity = async () => {
     try {
       const url = entity.price !== undefined 
-      ? `http://localhost:8080/api/products/${entity.id}` 
-      : `http://localhost:8080/api/employees/${entity.id}`;
+        ? `http://localhost:8080/api/products/${entity.id}` 
+        : `http://localhost:8080/api/employees/${entity.id}`;
       
       const response = await fetch(url, {
         method: "DELETE",
@@ -40,11 +41,11 @@ function EntityCard({ entity, onDelete, onUpdateEmployee, allDepartments}) {
           <img src={entity.image} alt={entity.name} />
         </div>
         <div className="entity-card-info">
-        <h2>{entity.name}</h2>
-        {entity.price && <p>Price: ${entity.price}</p>}
-        {entity.stock && <p>Stock: {entity.stock}</p>}
-        {entity.email && <p>Seller <br /> Email: {entity.email}</p>}
-        {entity.sales && <p>Sales: {entity.sales}</p>}
+          <h2>{entity.name}</h2>
+          {entity.price && <p>Price: ${entity.price}</p>}
+          {entity.stock && <p>Stock: {entity.stock}</p>}
+          {entity.email && <p>Seller <br /> Email: {entity.email}</p>}
+          {entity.sales && <p>Sales: {entity.sales}</p>}
         </div>
       </div>
       <div className="entity-card-footer">
@@ -55,14 +56,23 @@ function EntityCard({ entity, onDelete, onUpdateEmployee, allDepartments}) {
           <img src={editIcon} alt="Edit Button" />
         </button>
       </div>
-      <EditEmployeeModal
-        isOpen={isEditModalOpen}
-        onClose={() => setIsEditModalOpen(false)}
-        employee={entity}
-        onUpdateEmployee={onUpdateEmployee} // Pass the onUpdateEmployee function
-        allDepartments={allDepartments} // Pass the allDepartments prop
-        // getAllDepartments={getAllDepartments} // Pass getAllDepartments here
-      />
+      {entity.price !== undefined ? (
+        <EditProductModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          product={entity}
+          onUpdateProduct={onUpdateProduct} // Pass the onUpdateProduct function
+          allDepartments={allDepartments} // Pass the allDepartments prop
+        />
+      ) : (
+        <EditEmployeeModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          employee={entity}
+          onUpdateEmployee={onUpdateEmployee} // Pass the onUpdateEmployee function
+          allDepartments={allDepartments} // Pass the allDepartments prop
+        />
+      )}
     </div>
   );
 }

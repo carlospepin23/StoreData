@@ -1,7 +1,6 @@
-import './EmployeeForm.css'; // Import the CSS file for styling
+// import './EmployeeForm.css'; // Import the CSS file for styling
 import createIcon from '../assets/media/add.png';
 import trashIcon from '../assets/media/minus-circle.png';
-import React from 'react';
 
 function EmployeeForm({ deptIndex, empIndex, employee, handleEmployeeChange, addEmployee, removeEmployee, isLastEmployee, allDepartments }) {
   return (

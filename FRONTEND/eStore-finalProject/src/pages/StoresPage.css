@@ -14,6 +14,7 @@
   grid-template-rows: repeat(3, auto);
   gap: 20px;
   margin: 0 40px; /* Add horizontal margin to the sides */
+  
 }
 
 .stores-list {
@@ -23,12 +24,13 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   border: 1px solid black;
+
 }
 
-.stores-list.no-dots {
+/* .stores-list.no-dots {
   list-style-type: none;
   padding: 0;
-}
+} */
 
 .stores-list .store-card {
   background-color: white;
@@ -50,7 +52,6 @@
 
 .stores-list .store-information p {
   margin: 5px 0;
-  
 }
 
 .action-buttons {

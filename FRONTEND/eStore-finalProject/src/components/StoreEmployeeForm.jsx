@@ -1,5 +1,5 @@
 // import './EmployeeForm.css'; // Import the CSS file for styling
-
+import './StoreEmployeeForm.css';
 import createIcon from '../assets/media/add.png';
 import trashIcon from '../assets/media/minus-circle.png';
 

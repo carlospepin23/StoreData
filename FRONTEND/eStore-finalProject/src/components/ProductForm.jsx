@@ -1,11 +1,10 @@
-import './ProductForm.css'; // Import the CSS file for styling
+// import './ProductForm.css'; // Import the CSS file for styling
 import createIcon from '../assets/media/add.png';
 import trashIcon from '../assets/media/minus-circle.png';
 
-function ProductForm({ deptIndex, prodIndex, product, handleProductChange, addProduct, removeProduct, isLastProduct }) {
+function ProductForm({ deptIndex, prodIndex, product, handleProductChange, addProduct, removeProduct, isLastProduct, allDepartments }) {
   return (
     <div className="product-form">
-      <h4>Product {prodIndex + 1}</h4>
       <div>
         <label>Product Name:</label>
         <input
@@ -17,6 +16,23 @@ function ProductForm({ deptIndex, prodIndex, product, handleProductChange, addPr
           required
         />
       </div>
+      <div className="department-select">
+          <label>Department:</label>
+          <select
+            value={product.department?.id || ''} // Ensure the value is the department id
+            onChange={(e) =>
+              handleProductChange(deptIndex, deptIndex, 'department', { id: e.target.value }) // Pass the department as an object with an id property
+            }
+            required
+          >
+            <option value="">Select Department</option>
+            {allDepartments.map((department, index) => (
+              <option key={index} value={department.id}>
+                {department.name}
+              </option>
+            ))}
+          </select>
+        </div>
       <div>
         <label>Product Price:</label>
         <input

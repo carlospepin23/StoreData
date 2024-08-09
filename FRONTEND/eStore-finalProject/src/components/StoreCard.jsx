@@ -1,11 +1,15 @@
-
 import './StoreCard.css'; // Import the CSS file
 
 function StoreCard(props) {
   const { store } = props;
 
   const getDepartmentsQuantity = () => {
-    return store.departments.length;
+    // Check if store.departments is defined and is an array
+    if (Array.isArray(store.departments)) {
+      return store.departments.length;
+    }
+    // Return 0 or handle the error appropriately if store.departments is undefined or not an array
+    return 0;
   };
 
   return (

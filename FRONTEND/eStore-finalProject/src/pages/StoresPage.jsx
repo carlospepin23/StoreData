@@ -117,6 +117,7 @@ function StoresPage() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onAddStore={handleAddStore}
+        getStores={getStores}
       />
     </div>
   );
