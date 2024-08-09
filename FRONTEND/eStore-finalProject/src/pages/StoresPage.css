@@ -1,11 +1,12 @@
 .stores-page {
   padding: 20px;
   background-color: #f0f0f0;
+  /* background-color: #0c2323; */
   
 }
 
 .header{
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 
@@ -23,7 +24,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
 }
 
@@ -58,7 +59,7 @@
   display: flex;
   justify-content: flex-end; /* Align buttons to the right */
   margin-bottom: 20px;
-  border: 1px solid black
+  /* border: 1px solid black */
 }
 
 /* Add these styles to StoresPage.css */
@@ -108,7 +109,7 @@
   display: flex;
   justify-content: center; /* Center the search bar */
   margin-bottom: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .add-button, .filter-button {

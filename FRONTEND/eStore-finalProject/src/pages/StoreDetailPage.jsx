@@ -2,8 +2,11 @@ import NavComponent from "../components/NavComponent";
 import MenuComponent from "../components/MenuComponent";
 import EntityDisplayer from "../components/EntityDisplayer";
 import './StoreDetailPage.css';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
+import addIcon from '../assets/media/plus.svg';
+import filterIcon from '../assets/media/filter.svg';
+import searchIcon from '../assets/media/search.svg'; // Import the magnifier icon
 
 function StoreDetailPage() {
   const { id } = useParams();
@@ -11,6 +14,10 @@ function StoreDetailPage() {
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
   const [allDepartments, setAllDepartments] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null); // State to manage modal type
+  const searchInputRef = useRef(null);
 
   const getAllDepartments = async () => {
     const response = await fetch('http://localhost:8080/api/departments');
@@ -50,6 +57,7 @@ function StoreDetailPage() {
     const department = departments.find(dept => dept.name === departmentName);
     setSelectedDepartment(department);
     setSelectedOption(option);
+    setModalType(option.toLowerCase()); // Set the modal type based on the selected option
   };
 
   const handleUpdateEmployee = async (updatedEmployee) => {
@@ -109,6 +117,24 @@ function StoreDetailPage() {
     }
   };
 
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleFilterClick = () => {
+    // Implement filter logic here
+  };
+
+  const handleAddButtonClick = () => {
+    if (modalType === 'employees') {
+      // Open StoreDetailEmployeeModal
+      setIsModalOpen(true);
+    } else if (modalType === 'inventory') {
+      // Open StoreDetailProductModal
+      setIsModalOpen(true);
+    }
+  };
+
   return (
     <div className="store-detail">
       <div className="navbar">
@@ -122,7 +148,32 @@ function StoreDetailPage() {
             storeName={store.name} />
         </div>
         <div className="rightside-content">
-          <div className="search-bar">SEARCH BAR</div>
+          {selectedOption && (selectedOption.toLowerCase() === 'employees' || selectedOption.toLowerCase() === 'inventory') && (
+            <div className="action-buttons">
+              <div className="search-container">
+                <input
+                  type="text"
+                  placeholder="Search stores..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className="search-bar"
+                  ref={searchInputRef} // Attach the ref to the search input
+                />
+                <img
+                  src={searchIcon}
+                  alt="Search Icon"
+                  className="search-icon"
+                  onClick={() => searchInputRef.current.focus()} // Focus the search input when the icon is clicked
+                />
+              </div>
+              <button className="add-button" onClick={handleAddButtonClick}>
+                <img src={addIcon} alt="Add Button" />
+              </button>
+              <button className="filter-button" onClick={handleFilterClick}>
+                <img src={filterIcon} alt="Filter Button" />
+              </button>
+            </div>
+          )}
           <div className="display-entity">
             {selectedDepartment && selectedOption && (
               <EntityDisplayer 

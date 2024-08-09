@@ -1,33 +1,37 @@
 .store-card {
-    background-color: white;
-    border-radius: 15px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    padding: 20px;
-    margin: 10px;
-    transition: transform 0.2s; 
-    
-  }
+  background-color: white;
+  border-radius: 15px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 20px;
+  margin: 10px;
+  transition: transform 0.2s; 
+}
 
-  .store-card-footer {
-    display: flex;
-    justify-content: center; /* Center the buttons */
-    margin-top: 20px; /* Add margin to position the footer lower */
-    opacity: 0; 
-    transition: opacity 0.3s; /* Smooth transition for showing/hiding */
-  }
+.store-card-footer {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  margin-top: 20px; /* Add margin to position the footer lower */
+  opacity: 0; 
+  transition: opacity 0.3s; /* Smooth transition for showing/hiding */
+}
+
+.store-card:hover .store-card-footer {
+  opacity: 1; 
+}
+
+.store-card-footer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px; /* Increase margin to separate buttons more */
+}
+
+.store-card-footer img {
+  width: 30px; /* Make the buttons smaller */
+  height: 30px; /* Make the buttons smaller */
+}
+
+.store-card-link {
+  text-decoration: none; /* Remove underline from links */
   
-  .store-card:hover .store-card-footer {
-    opacity: 1; 
-  }
-  
-  .store-card-footer button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin: 0 10px; /* Increase margin to separate buttons more */
-  }
-  
-  .store-card-footer img {
-    width: 30px; /* Make the buttons smaller */
-    height: 30px; /* Make the buttons smaller */
-  }
+}

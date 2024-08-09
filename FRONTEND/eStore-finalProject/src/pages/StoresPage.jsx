@@ -77,21 +77,21 @@ function StoresPage() {
       </div>
       <div className="action-buttons">
         <div className="search-container">
-  <input
-    type="text"
-    placeholder="Search stores..."
-    value={searchQuery}
-    onChange={handleSearchChange}
-    className="search-bar"
-    ref={searchInputRef} // Attach the ref to the search input
-  />
-  <img
-    src={searchIcon}
-    alt="Search Icon"
-    className="search-icon"
-    onClick={() => searchInputRef.current.focus()} // Focus the search input when the icon is clicked
-  />
-</div>
+          <input
+            type="text"
+            placeholder="Search stores..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="search-bar"
+            ref={searchInputRef} // Attach the ref to the search input
+          />
+          <img
+            src={searchIcon}
+            alt="Search Icon"
+            className="search-icon"
+            onClick={() => searchInputRef.current.focus()} // Focus the search input when the icon is clicked
+          />
+        </div>
         <button className="add-button" onClick={() => setIsModalOpen(true)}>
           <img src={addIcon} alt="Add Button" />
         </button>

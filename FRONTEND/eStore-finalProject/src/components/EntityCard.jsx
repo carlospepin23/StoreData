@@ -37,9 +37,9 @@ function EntityCard({ entity, onDelete, onUpdateEmployee, onUpdateProduct, allDe
   return (
     <div className="entity-card">
       <div className="entity-card-main">
-        <div className="entity-card-image">
+        {/* <div className="entity-card-image">
           <img src={entity.image} alt={entity.name} />
-        </div>
+        </div> */}
         <div className="entity-card-info">
           <h2>{entity.name}</h2>
           {entity.price && <p>Price: ${entity.price}</p>}

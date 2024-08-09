@@ -25,7 +25,7 @@ function NavComponent() {
             <Link to="/stores">Stored Data</Link>
           </li>
           <li>
-            <Link to="/categories">About Us</Link>
+            <Link to="/contactUs">Contact Us</Link>
           </li>
         </ul>
       </div>

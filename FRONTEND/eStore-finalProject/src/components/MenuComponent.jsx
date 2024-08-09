@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import DepartmentComponent from "./DepartmentComponent";
+import './MenuComponent.css'; // Import the CSS file
 
-function MenuComponent({ departments, onOptionSelect,storeName }) {
+function MenuComponent({ departments, onOptionSelect, storeName }) {
   return (
     <div>
-      <h1>{storeName}</h1>
+      <h1 className="store-name">{storeName}</h1>
       <div>
         {departments && departments.length > 0 ? (
           departments.map((dept, index) => (
