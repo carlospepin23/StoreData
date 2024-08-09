@@ -92,9 +92,11 @@ function AddStoreModal({ isOpen, onClose, onAddStore, getStores }) {
   
       if (response.ok) {
         const text = await response.text();
-        const createdStore = text ? JSON.parse(text) : {};
-        
-        onAddStore(createdStore);
+        // const createdStore = text ? JSON.parse(text) : {};
+        // console.log('New store created checker:', newStore);
+
+        // onAddStore(createdStore);::::::before!!
+        onAddStore(newStore); // Call onAddStore with the new store:::::after!!
         getStores(); // Call getStores after adding the new store
         onClose();
       } else {

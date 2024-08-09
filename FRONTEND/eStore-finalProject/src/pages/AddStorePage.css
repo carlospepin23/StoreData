@@ -1,0 +1,32 @@
+.addstore-page {
+  background-color: black;
+  padding: 20px;
+  min-height: 100vh; /* Ensures the div takes up the full viewport height */
+  background-image: url('../assets/media/website-createStore-background.png'); /* Adjust the path based on your directory structure */
+  background-size: cover; /* Ensures the image covers the entire background */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+.addstore-page h1 {
+  color: white;
+  font-size: 4rem; /* Make the header bigger */
+  text-align: center;
+  margin-top: 20vh; /* Center the header vertically */
+}
+
+.addstore-page .forward-link {
+  color: white;
+  text-decoration: none; /* Remove underline from the link */
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+.addstore-page .message {
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 35vh; /* Move the message lower */
+}
