@@ -1,0 +1,39 @@
+.product-form {
+  position: relative;
+  border: 1px solid black; /* Add border */
+  border-radius: 5%;
+}
+
+.button-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.add-product-button,
+.remove-product-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.add-product-button img,
+.remove-product-button img {
+  width: 45px;
+  height: 45px;
+  background-color: #78c093; /* Set background color to light blue */
+  border-radius: 50%; /* Make the corners circular */
+}
+
+.product-form .add-product-button,
+.product-form .remove-product-button {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.product-form:hover .add-product-button,
+.product-form:hover .remove-product-button {
+  opacity: 1;
+}

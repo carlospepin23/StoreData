@@ -1,0 +1,32 @@
+.department-container {
+    position: relative;
+    padding-right: 30px;
+    border: 1px solid black;
+    border-radius: 5%;
+}
+
+.department-buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    opacity: 0; /* Initially hide the buttons */
+    transition: opacity 0.3s; /* Add transition effect */
+}
+
+.department-container:hover .department-buttons {
+    opacity: 1; /* Show buttons on hover */
+}
+
+.department-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.department-buttons img {
+    width: 45px;
+    height: 45px;
+    background-color: #78c093; /* Set background color to light blue */
+    border-radius: 50%; /* Make the corners circular */
+}

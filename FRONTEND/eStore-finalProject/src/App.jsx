@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import StoresPage from './pages/StoresPage'
 import AddStorePage from './pages/AddStorePage'
 import StoreDetailPage from './pages/StoreDetailPage'
+import ContactUsPage from './pages/ContactUsPage'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Route path="/stores" element={<StoresPage/>} />
       <Route path="/stores/:id" element={<StoreDetailPage />} /> {/* Dynamic route */}
       <Route path="/stores/add" element={<AddStorePage/>} />
+      <Route path="/contactUs" element={<ContactUsPage/>} />
     </Routes>
   )
 }

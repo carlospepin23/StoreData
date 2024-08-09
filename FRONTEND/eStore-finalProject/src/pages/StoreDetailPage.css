@@ -23,7 +23,7 @@
   .leftside-menu {
     width: 200px; /* Adjust the width as needed */
     /* Add your leftside menu styles here */
-    border: 1px solid black; /* Add a black border */
+    /* border: 1px solid black; */
   }
   
   .rightside-content {
@@ -31,12 +31,13 @@
     display: flex;
     flex-direction: column;
     margin-left: 135px;
-    border: 1px solid black; /* Add a black border */
+    /* border: 1px solid black;  */
   }
   
   .search-bar {
     /* Add your search bar styles here */
     margin-bottom: 20px; /* Adjust the margin as needed */
+    
   }
   
   .display-entity {

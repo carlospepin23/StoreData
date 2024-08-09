@@ -1,19 +1,44 @@
-.entity-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-  }
-  
-  .entity-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .entity-card h2 {
-    margin-top: 0;
-  }
-  
-  .entity-card p {
-    margin-bottom: 0;
-  }
+.entity-card-main {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  position: relative; /* Ensure the footer is positioned relative to the card */
+}
+
+.entity-card-main:hover {
+  transform: scale(1.05);
+}
+
+.entity-card h2 {
+  margin-top: 0;
+}
+
+.entity-card p {
+  margin-bottom: 0;
+}
+
+.entity-card-footer {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  margin-top: 20px; /* Add margin to position the footer lower */
+  opacity: 0; /* Initially hide the footer */
+  transition: opacity 0.3s; /* Smooth transition for showing/hiding */
+}
+
+.entity-card:hover .entity-card-footer {
+  opacity: 1; /* Show the footer on hover */
+}
+
+.entity-card-footer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px; /* Increase margin to separate buttons more */
+}
+
+.entity-card-footer img {
+  width: 30px; /* Make the buttons smaller */
+  height: 30px; /* Make the buttons smaller */
+}

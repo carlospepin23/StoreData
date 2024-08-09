@@ -1,20 +1,37 @@
 .store-card {
-    background-color: white;
-    border-radius: 15px; /* Adjust the value for more or less circular edges */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visual effect */
-    padding: 20px;
-    margin: 10px;
-    transition: transform 0.2s; /* Optional: Add a transition effect on hover */
-  }
+  background-color: white;
+  border-radius: 15px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 20px;
+  margin: 10px;
+  transition: transform 0.2s; 
+}
+
+.store-card-footer {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  margin-top: 20px; /* Add margin to position the footer lower */
+  opacity: 0; 
+  transition: opacity 0.3s; /* Smooth transition for showing/hiding */
+}
+
+.store-card:hover .store-card-footer {
+  opacity: 1; 
+}
+
+.store-card-footer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px; /* Increase margin to separate buttons more */
+}
+
+.store-card-footer img {
+  width: 30px; /* Make the buttons smaller */
+  height: 30px; /* Make the buttons smaller */
+}
+
+.store-card-link {
+  text-decoration: none; /* Remove underline from links */
   
-  .store-card:hover {
-    transform: scale(1.05); /* Optional: Slightly enlarge the card on hover */
-  }
-  
-  .title h2 {
-    margin: 0;
-  }
-  
-  .store-information p {
-    margin: 5px 0;
-  }
+}

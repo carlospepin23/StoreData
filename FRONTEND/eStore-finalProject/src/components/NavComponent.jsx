@@ -19,13 +19,13 @@ function NavComponent() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/products">Create your e-Store!</Link>
+            <Link to="/stores/add">Create your e-Store!</Link>
           </li>
           <li>
             <Link to="/stores">Stored Data</Link>
           </li>
           <li>
-            <Link to="/categories">About Us</Link>
+            <Link to="/contactUs">Contact Us</Link>
           </li>
         </ul>
       </div>
